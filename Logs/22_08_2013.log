@@ -1,2 +1,50 @@
 22/08/2013 10:42:03 ERROR [8]	 page :DBServicesAPP.cs, function: getAnimalTypes(), exeption message: Invalid object name '.dbo.ProductTypes'.
 22/08/2013 10:42:03 ERROR [8]	 page :InjuredPet.aspx.cs, the exeption message is : Invalid object name '.dbo.ProductTypes'.
+22/08/2013 11:04:16 ERROR [10]	 page :DBServicesAPP.cs, function: connect(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:04:16 ERROR [10]	 page :DBServicesAPP.cs, function: getAnimalTypes(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:04:16 ERROR [10]	 page :InjuredPet.aspx.cs, the exeption message is : Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:04:34 ERROR [8]	 page :DBServicesAPP.cs, function: connect(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:04:34 ERROR [8]	 page :DBServicesAPP.cs, function: getVolonteerPass(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:04:34 ERROR [8]	 page :loginPage.aspx.cs, the exeption message is : Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:08:06 ERROR [8]	 page :DBServicesAPP.cs, function: connect(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:08:06 ERROR [8]	 page :DBServicesAPP.cs, function: getAnimalTypes(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:08:06 ERROR [8]	 page :InjuredPet.aspx.cs, the exeption message is : Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:09:50 ERROR [10]	 page :DBServicesAPP.cs, function: connect(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:09:50 ERROR [10]	 page :DBServicesAPP.cs, function: getVolonteerPass(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:09:50 ERROR [10]	 page :loginPage.aspx.cs, the exeption message is : Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:11:38 ERROR [10]	 page :DBServicesAPP.cs, function: connect(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:12:02 ERROR [10]	 page :DBServicesAPP.cs, function: getVolonteerPass(), exeption message: Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 11:12:02 ERROR [10]	 page :loginPage.aspx.cs, the exeption message is : Cannot open database "KSR2" requested by the login. The login failed.
+Login failed for user 'niro-PC\niran'.
+22/08/2013 12:38:24 ERROR [21]	 page :DBServicesAPP.cs, function: getVeg_ShoppingList(), exeption message: Incorrect syntax near the keyword 'ORDER'.
+22/08/2013 12:38:24 ERROR [21]	 page :ActivityShow.aspx.cs, the exeption message is : Incorrect syntax near the keyword 'ORDER'.
+22/08/2013 17:21:01 ERROR [29]	 page :DBServicesAPP.cs, function: getVeg_ShoppingList(), exeption message: Incorrect syntax near the keyword 'ORDER'.
+22/08/2013 17:21:01 ERROR [29]	 page :ActivityShow.aspx.cs, the exeption message is : Incorrect syntax near the keyword 'ORDER'.
+22/08/2013 17:41:58 ERROR [29]	 page :DBServicesAPP.cs, function: getAnimalTypes(), exeption message: Invalid object name 'Products'.
+22/08/2013 17:41:58 ERROR [29]	 page :InjuredPet.aspx.cs, the exeption message is : Invalid object name 'Products'.
+22/08/2013 17:46:27 ERROR [29]	 page :DBServicesAPP.cs, function: getAnimalTypes(), exeption message: Invalid column name 'Prodect_id'.
+Invalid column name 'Prodect_desc'.
+22/08/2013 17:46:27 ERROR [29]	 page :InjuredPet.aspx.cs, the exeption message is : Invalid column name 'Prodect_id'.
+Invalid column name 'Prodect_desc'.
+22/08/2013 17:46:53 ERROR [26]	 page :DBServicesAPP.cs, function: getAnimalTypes(), exeption message: Invalid column name 'Prodect_id'.
+Invalid column name 'Prodect_desc'.
+22/08/2013 17:46:53 ERROR [26]	 page :InjuredPet.aspx.cs, the exeption message is : Invalid column name 'Prodect_id'.
+Invalid column name 'Prodect_desc'.
+22/08/2013 17:51:08 ERROR [24]	 page :DBServicesAPP.cs, function: getAnimalTypes(), exeption message: Invalid column name 'Prodect_id'.
+Invalid column name 'Prodect_desc'.
+22/08/2013 17:51:08 ERROR [24]	 page :InjuredPet.aspx.cs, the exeption message is : Invalid column name 'Prodect_id'.
+Invalid column name 'Prodect_desc'.

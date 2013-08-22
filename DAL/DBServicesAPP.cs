@@ -57,7 +57,7 @@ namespace Productim.DAL
             {
                 con = connect(); // open the connection to the database/
                 da = new SqlDataAdapter(SQLQueries.getPass(UserName), con); // create the data adapter
-                DataSet ds = new DataSet("igroup29_test1DS"); // create a DataSet and give it a name (not mandatory) as defualt it will be the same name as the DB
+                DataSet ds = new DataSet(); 
                 da.Fill(ds);       // Fill the datatable (in the dataset), using the Select command 
                 dt = ds.Tables[0];     // point to the cars table , which is the only table in this case
 
@@ -70,10 +70,6 @@ namespace Productim.DAL
             disconnect(con);
             return dt;
         }
-
-
-
-
 
         public DataTable getProductTypes()
         {
@@ -98,6 +94,28 @@ namespace Productim.DAL
 
         }
 
+        public DataTable getProducts()
+        {
+            SqlConnection con;
+
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.getProducts(), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+
+            }
+            catch (Exception ex)
+            {
+                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: getAnimalTypes(), exeption message: " + ex.Message);
+                throw ex;
+            }
+            disconnect(con);
+            return dt;
+
+        }
 
 
 

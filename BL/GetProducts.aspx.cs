@@ -11,7 +11,7 @@ using Productim.Classes;
 
 namespace Productim.BL
 {
-    public partial class GetProductTypes : System.Web.UI.Page
+    public partial class GetProducts : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,13 +21,13 @@ namespace Productim.BL
 
             //DataTable getCities;
             // DataTable getAnimalTypes;
-            DataTable getProductTypes;
+            DataTable Products;
 
             try
             {
 
 
-                getProductTypes = dbs.getProductTypes();
+                Products = dbs.getProducts();
             }
 
             catch (Exception ex)
@@ -36,16 +36,13 @@ namespace Productim.BL
                 throw;
             }
 
-            getProductTypes.Columns[0].ColumnName = "id";
-            getProductTypes.Columns[1].ColumnName = "name";
+            Products.Columns[0].ColumnName = "id";
+            Products.Columns[1].ColumnName = "name";
 
 
-            string jsonStringProductTypes = serializer.Serialize(SerializeTable(getProductTypes));
+            string jsonStringProducts = serializer.Serialize(SerializeTable(Products));
 
-
-           // string jsonString = "{\"ProductTypes\":" + jsonStringProductTypes + "}";
-           string jsonString = jsonStringProductTypes;
-            Response.Write(jsonString);
+            Response.Write(jsonStringProducts);
             Response.End();
         }
 

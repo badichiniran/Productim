@@ -51,11 +51,13 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BL\GetProducts.aspx" />
     <Content Include="BL\GetProductTypes.aspx" />
     <Content Include="BL\InsertProduct.aspx" />
     <Content Include="BL\loginPage.aspx" />
     <Content Include="BL\RemoveProduct.aspx" />
     <Content Include="BL\ShowShoppingList.aspx" />
+    <Content Include="SelectProducts.htm" />
     <Content Include="images\Adopt-A-Pet.png" />
     <Content Include="images\background.jpg" />
     <Content Include="images\background1.jpg" />
@@ -101,6 +103,13 @@
     <Content Include="ShppingListByProduct.htm" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\GetProducts.aspx.cs">
+      <DependentUpon>GetProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\GetProducts.aspx.designer.cs">
+      <DependentUpon>GetProducts.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BL\GetProductTypes.aspx.cs">
       <DependentUpon>GetProductTypes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

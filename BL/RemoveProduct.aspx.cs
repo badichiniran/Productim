@@ -27,7 +27,7 @@ namespace Productim.BL
 
                 Product p = new Product()
                 {
-                    Prodect_id = requestQuery["Prodect_id"],
+                    Product_id = requestQuery["Prodect_id"],
 
 
                 };

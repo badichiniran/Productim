@@ -27,8 +27,8 @@ namespace Productim.BL
                 Product product = new Product()
                 {
 
-                    Prodect_name = requestQuery["Prodect_name"],
-                    Prodect_amount = requestQuery["Prodect_amount"],
+                    Product_name = requestQuery["Prodect_name"],
+                    Product_amount = requestQuery["Prodect_amount"],
                     ProductType_id = requestQuery["ProductType_id"],
                 };
                 product.insertProduct();

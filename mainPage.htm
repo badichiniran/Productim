@@ -71,16 +71,18 @@
             var password = $('#pssTXT').val();
             $.ajax({
                 type: "GET",
-                url: "BL/loginPage.aspx",
-                //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/loginPage.aspx",
+               url: "BL/loginPage.aspx",
+               //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/loginPage.aspx",
                 data: { 'id': id, 'password': password },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (res) {
+                    alert("success-loginPage.aspx");
                     window.localStorage.setItem("UserId", id);
                     window.location.replace('mainPage.htm');
                 }, // success
                 error: function (error) {
+                    alert("error-loginPage.aspx");
                     if (error.status == 1) {
                         alert("סיסמא לא נכונה. אנא נסה שוב");
                     }
@@ -109,21 +111,23 @@
         });
 
 
-        $.ajax({
-            type: "GET",
-            url: "BL/GetProductTypes.aspx",
-            //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/GetProductTypes.aspx",
-            data: {},
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (res) {
-                populateDDL("ProductTypeDDL", res["ProductTypes"]);
+//        $.ajax({
+//            type: "GET",
+//            url: "BL/GetProductTypes.aspx",
+//            //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/GetProductTypes.aspx",
+//            data: {},
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "json",
+//            success: function (res) {
+//                alert("success-GetProductTypes.aspx");
+//                populateDDL("ProductTypeDDL", res["ProductTypes"]);
 
-            }, // success
-            error: function (error) {
-                alert("בעיה בטעינת הדף, אנא נסה שנית במועד מאוחר יותר");
-            } //error
-        }); // ajax
+//            }, // success
+//            error: function (error) {
+//                alert("error-GetProductTypes.aspx");
+//                alert("בעיה בטעינת הדף, אנא נסה שנית במועד מאוחר יותר");
+//            } //error
+//        });  // ajax
 
         function populateDDL(Name, data) {
             var select = document.getElementById(Name);
@@ -147,11 +151,14 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "text",
                 success: function (res) {
+                    alert("success-InsertProduct.aspx");
+
                     UnLoad1();
                     alert("מוצר הוסף בהצלחה")
                     //                    window.location.replace('mainPage.htm', 'slide', true, true);
                 }, // success
                 error: function (error) {
+                    alert("error-InsertProduct.aspx");
                     UnLoad1();
                     //                    if (error.status == 1) {
                     //                        alert("אנא בחר חיה");

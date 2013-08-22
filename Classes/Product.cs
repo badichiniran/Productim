@@ -18,24 +18,24 @@ namespace Productim
         DBServicesAPP dbs = new DBServicesAPP();
 
 
-        string prodect_id;
-        public string Prodect_id
+        string product_id;
+        public string Product_id
         {
-            get { return prodect_id; }
-            set { prodect_id = value; }
+            get { return product_id; }
+            set { product_id = value; }
         }
-        string prodect_name;
-        public string Prodect_name
+        string product_name;
+        public string Product_name
         {
-            get { return prodect_name; }
-            set { prodect_name = value; }
+            get { return product_name; }
+            set { product_name = value; }
         }
 
-        string prodect_amount;
-        public string Prodect_amount
+        string product_amount;
+        public string Product_amount
         {
-            get { return prodect_amount; }
-            set { prodect_amount = value; }
+            get { return product_amount; }
+            set { product_amount = value; }
         }
 
         string productType_id;

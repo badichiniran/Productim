@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" rel="stylesheet" />
+<!--    <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>-->
+        	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+    <style type="text/css">
+        #contentId
+        {
+            text-align: center;
+        }
+        .style1
+        {
+            font-size: 22pt;
+        }
+        .style2
+        {
+            font-size: 17pt;
+        }
+    </style>
+
+        <script type="text/javascript">
+            
+                $.ajax({
+                    type: "GET",
+                    url: "BL/GetProducts.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/GetProducts.aspx",
+                    data: {},
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (info) {
+                        fillDynamicList(info);
+                    }, // success
+                    error: function (error) {
+                        alert("Error-GetProductTypes.aspx");
+
+                    } //error
+                });  // ajax
+               
+           
+
+   
+            //var info= [{ "id": 1, "name": "שתיה" }, { "id": 2, "name": "ירקות ופירות" }, { "id": 3, "name": " עוף בשר דגים" }, { "id": 4, "name": "מוצרי חלב" }, { "id": 5, "name": "מאפה" }, { "id": 6, "name": "נשנושים" }, { "id": 7, "name": "דגנים" }, { "id": 8, "name": "היגיינה" }, { "id": 9, "name": "שונות"}]
+
+
+             //pageinit event for first page
+             //triggers only <once></once>
+             //write all your on-load functions and event handlers pertaining to page1
+//            $(document).on("pageinit", "#info-page", function () {
+
+
+                function fillDynamicList(info) {
+                    //set up string for adding <li/>
+                    var li = "";
+                    //container for $li to be added
+                    $.each(info, function (i, name) {
+                        //add the <li> to "li" variable
+                        //note the use of += in the variable
+                        //meaning I'm adding to the existing data. not replacing it.
+                        //store index value in array as id of the <a> tag
+                        li += '<li><a href="#" id="' + i + '" class="info-go">' + name.name + '</a></li>';
+                    });
+                    //append list to ul
+                    $("#prof-list").append(li).promise().done(function () {
+                        //wait for append to finish - thats why you use a promise()
+                        //done() will run after append is done
+                        //add the click event for the redirection to happen to #details-page
+                        $(this).on("click", ".info-go", function (e) {
+                            e.preventDefault();
+                            //store the information in the next page's data
+                            $("#details-page").data("info", info[this.id]);
+                            //change the page # to second page. 
+                            //Now the URL in the address bar will read index.html#details-page
+                            //where #details-page is the "id" of the second page
+                            //we're gonna redirect to that now using changePage() method
+                            $.mobile.changePage("#details-page");
+                        });
+
+                        //refresh list to enhance its styling.
+                        $(this).listview("refresh");
+                    });
+                    //            });
+                }
+
+             //use pagebeforeshow
+             //DONT USE PAGEINIT! 
+             //the reason is you want this to happen every single time
+             //pageinit will happen only once
+             $(document).on("pagebeforeshow", "#details-page", function () {
+                 //get from data - you put this here when the "a" wa clicked in the previous page
+                 var info = $(this).data("info");
+                 //string to put HTML in          
+                 var info_view = '<div class="ui-grid-a" id="' + info["id"] + '">' + info["name"] + '</div>';
+
+                 //add this to html
+                 $(this).find("[data-role=content]").html(info_view);
+             });
+        
+</script>
+   
+
+</head>
+<body >
+<!--first page -->
+<div data-role="page" id="info-page">
+    <div data-role="header" data-theme="b">
+         <h1> Information</h1>
+
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true"  data-filter="true">
+            
+            <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>
+        </ul>
+    </div>
+</div>
+<!--second page -->
+<div data-role="page" id="details-page">
+    <div data-role="header" data-theme="b"><a href="#" data-rel="back" data-role="button">Go back</a>
+
+         <h1>בחר כמות</h1>
+
+    </div>
+    <div data-role="content"></div>
+
+</div>
+
+
+
+<!--..
+    <div class="ui-grid-a" >
+        <div class="ui-block-a">
+            <div class="ui-bar field" style="font-weight: bold; text-align: left;">
+                ' + key + '</div>
+        </div>
+        <div class="ui-block-b">
+            <div class="ui-bar value" style="width: 75%">
+                ' + info[key] + '</div>
+        </div>
+    </div>
+    ...  -->  
+</body>
+</html>
