@@ -1,5 +1,7 @@
 Insert into Users values ('נירן','1234')
 
+Insert into List(List_name,UserName) values ('רשימה לסופר','נירן')
+
 INSERT INTO Product_categories (Product_category_desc) VALUES ('מזון')
 INSERT INTO Product_categories (Product_category_desc) VALUES ('בשר דגים וקפואים')
 INSERT INTO Product_categories (Product_category_desc) VALUES ('פירות')

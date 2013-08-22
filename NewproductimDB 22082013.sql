@@ -26,7 +26,7 @@ List_id int identity (1,1) primary key,
 List_name nvarchar (20),
 UserName nvarchar (15),
 Creation_date datetime DEFAULT (GETDATE()),
-Is_Active bit NOT NULL DEFAULT ((0)) ,
+Is_Active bit NOT NULL DEFAULT ((1)) ,
 constraint UserName_FK foreign key (UserName) references Users  
 ) 
 

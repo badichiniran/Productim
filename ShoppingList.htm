@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    
+    
+
     <style type="text/css">
         #contentId
         {
@@ -47,19 +50,20 @@
             </label>
         </div>
         <!-- /header -->
+
+
+
         <div data-role="content" id="contentId">
-            <ul data-role="listview"  data-inset="true" data-filter="true">
-                <li><a href="#List" onclick="showList(1)">שתיה</a></li>
-                <li><a href="#List" onclick="showList(2)">ירקות ופירות</a></li>
-                <li><a href="#List" onclick="showList(3)">עוף בשר דגים</a></li>
-                <li><a href="#List" onclick="showList(4)">מוצרי חלב</a></li>
-                <li><a href="#List" onclick="showList(5)">מאפה</a></li>
-                <li><a href="#List" onclick="showList(6)">נשנושים</a></li>
-                <li><a href="#List" onclick="showList(7)">דגנים</a></li>
-                <li><a href="#List" onclick="showList(8)">היגיינה</a></li>
-                <li><a href="#List" onclick="showList(9)">שונות</a></li>
-            </ul>
+         					<fieldset data-role="controlgroup" data-iconpos="right" >
+				
+						<input type="checkbox" name="checkbox-v-6b" id="checkbox-v-6b">
+						<label for="checkbox-v-6b" >Two</label>
+                       
+
+					</fieldset>  
         </div>
+
+			
         <!-- /content -->
         <div data-role="footer" id="footer_div" style="text-align: left" data-position="fixed">
             <a href="#" data-role="button" data-icon="back" onclick="back()">חזרה</a>

@@ -30,7 +30,7 @@
                 $.ajax({
                     type: "GET",
                     url: "BL/GetProducts.aspx",
-                    //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/GetProducts.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
                     data: {},
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -112,16 +112,10 @@
                  var Units = $('#Units').val();
                  var Comment = $('#Comment').val();
                  var UserName = window.localStorage.getItem("UserId")
-//                 alert(Prodect_amount);
-//                 alert(Product_id);
-//                 alert(Units);
-//                 alert(Comment);
-//                 alert(UserName);
-
                  $.ajax({
                      type: "GET",
                      url: "BL/InsertProduct.aspx",
-                     //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/InsertProduct.aspx",
+                     //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                      data:
                      { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserName': UserName },
                      contentType: "application/json; charset=utf-8",
@@ -188,8 +182,8 @@
                    
                 
             
-            <td dir="rtl">
-                כמות<input id="Product_amount" type="text" />
+            <td >
+                כמות<input type="range" id="Product_amount" name="slider-fill"  value="1" min="0" max="10" data-highlight="true" />
             </td>
             <td>
                 <select id="Units">
@@ -205,7 +199,7 @@
               
             
             <td dir="rtl">
-                 הערה <input id="Comment" type="text" />
+                 הערה <input id="Comment" type="text"  />
             </td>
         </tr>
 

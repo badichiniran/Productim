@@ -50,3 +50,63 @@ Invalid column name 'Prodect_desc'.
 Invalid column name 'Prodect_desc'.
 22/08/2013 20:47:22 ERROR [26]	 page :InjuredPet_Incident.aspx.cs, the exeption message is : Conversion failed when converting the varchar value '@tmpList_id' to data type int.
 22/08/2013 20:52:50 ERROR [24]	 page :InjuredPet_Incident.aspx.cs, the exeption message is : Conversion failed when converting the varchar value '@tmpList_id' to data type int.
+22/08/2013 22:29:40 ERROR [29]	 page :DBServicesAPP.cs, function: getVeg_ShoppingList(), exeption message: Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 22:29:40 ERROR [29]	 page :ActivityShow.aspx.cs, the exeption message is : Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 22:30:46 ERROR [29]	 page :DBServicesAPP.cs, function: getVeg_ShoppingList(), exeption message: Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 22:30:46 ERROR [29]	 page :ActivityShow.aspx.cs, the exeption message is : Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 22:38:18 ERROR [29]	 page :DBServicesAPP.cs, function: getVeg_ShoppingList(), exeption message: Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 22:38:18 ERROR [29]	 page :ActivityShow.aspx.cs, the exeption message is : Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 22:38:31 ERROR [29]	 page :DBServicesAPP.cs, function: getVeg_ShoppingList(), exeption message: Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 22:38:31 ERROR [29]	 page :ActivityShow.aspx.cs, the exeption message is : Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 22:39:03 ERROR [29]	 page :DBServicesAPP.cs, function: getVeg_ShoppingList(), exeption message: Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 22:39:03 ERROR [29]	 page :ActivityShow.aspx.cs, the exeption message is : Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 23:19:18 ERROR [29]	 page :DBServicesAPP.cs, function: getVeg_ShoppingList(), exeption message: Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
+22/08/2013 23:19:18 ERROR [29]	 page :ActivityShow.aspx.cs, the exeption message is : Invalid column name 'ProductType_id'.
+Invalid column name 'isPurchesd'.
+Invalid column name 'product_name'.
+Invalid column name 'product_amount'.
+Invalid column name 'product_name'.
