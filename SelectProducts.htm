@@ -96,12 +96,66 @@
                  //get from data - you put this here when the "a" wa clicked in the previous page
                  var info = $(this).data("info");
                  //string to put HTML in          
-                 var info_view = '<div class="ui-grid-a" id="' + info["id"] + '">' + info["name"] + '</div>';
+                 var info_view = '<div class="ui-grid-a" id="Product_name">' + info["name"] + '</div><input id="Product_id" type="text"  hidden="hidden" value=' + info["id"] + ' />';
 
                  //add this to html
                  $(this).find("[data-role=content]").html(info_view);
              });
-        
+
+
+
+
+             function AddProduct() {
+
+                 var Prodect_amount = $('#Product_amount').val();
+                 var Product_id = $('#Product_id').val();
+                 var Units = $('#Units').val();
+                 var Comment = $('#Comment').val();
+                 var UserName = window.localStorage.getItem("UserId")
+//                 alert(Prodect_amount);
+//                 alert(Product_id);
+//                 alert(Units);
+//                 alert(Comment);
+//                 alert(UserName);
+
+                 $.ajax({
+                     type: "GET",
+                     url: "BL/InsertProduct.aspx",
+                     //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/InsertProduct.aspx",
+                     data:
+                     { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserName': UserName },
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "text",
+                     success: function (res) {
+                         alert("success-InsertProduct.aspx");
+                         UnLoad1();
+                         alert("מוצר הוסף בהצלחה")
+                         //window.location.replace('mainPage.htm', 'slide', true, true);
+                     }, // success
+                     error: function (error) {
+                         alert("error-InsertProduct.aspx");
+                         UnLoad1();
+                         //                    if (error.status == 1) {
+                         //                        alert("אנא בחר חיה");
+                         //                    }
+                         alert("שגיאה. אנא נסה שוב")
+                     } //error
+                 });   // ajax
+             } //AddProduct()
+
+             function Load1() {
+                 $.mobile.loading('show', {
+                     text: "שומר פרטים",
+                     theme: 'b',
+                     textVisible: true
+                 });
+             }
+
+             function UnLoad1() {
+                 $.mobile.loading('hide');
+             } // Unload
+
+
 </script>
    
 
@@ -111,6 +165,7 @@
 <div data-role="page" id="info-page">
     <div data-role="header" data-theme="b">
          <h1> Information</h1>
+         
 
     </div>
     <div data-role="content">
@@ -128,6 +183,40 @@
 
     </div>
     <div data-role="content"></div>
+    <table>
+        <tr>
+                   
+                
+            
+            <td dir="rtl">
+                כמות<input id="Product_amount" type="text" />
+            </td>
+            <td>
+                <select id="Units">
+                    <option value="1">יחידות</option>
+                    <option value="2">קילוגרם</option>
+                    <option value="3">גרם</option>
+                    <option value="4">חבילות</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            
+              
+            
+            <td dir="rtl">
+                 הערה <input id="Comment" type="text" />
+            </td>
+        </tr>
+
+                        <tr>
+                    <td style="text-align: center">
+                        <p>
+                            <a href="#" data-role="button" data-icon="check" data-inline="true" onclick="AddProduct()">הוסף מוצר</a>
+                        </p>
+                    </td>
+                </tr>
+    </table>
 
 </div>
 

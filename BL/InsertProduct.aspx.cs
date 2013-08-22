@@ -27,11 +27,14 @@ namespace Productim.BL
                 Product product = new Product()
                 {
 
-                    Product_name = requestQuery["Prodect_name"],
                     Product_amount = requestQuery["Prodect_amount"],
-                    ProductType_id = requestQuery["ProductType_id"],
+                    Product_id = requestQuery["Product_id"],
+                    Units = requestQuery["Units"],
+                    Comment = requestQuery["Comment"],
+                    UserName = requestQuery["UserName"],
+                  
                 };
-                product.insertProduct();
+                dbs.insertProductToList(product);
 
 
             }

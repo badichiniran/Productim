@@ -27,9 +27,11 @@ INSERT INTO Products(Product_desc,Product_category_id) VALUES ('סוכר וניל',1)
 INSERT INTO Products(Product_desc,Product_category_id) VALUES ('מלח',1)
 
 
-INSERT INTO Units (Unit_desc) VALUES('חבילות')
+INSERT INTO Units (Unit_desc) VALUES('יחידות')
 INSERT INTO Units (Unit_desc) VALUES('קילוגרם')
 INSERT INTO Units (Unit_desc) VALUES('גרם')
-INSERT INTO Units (Unit_desc) VALUES('יחידות')
+INSERT INTO Units (Unit_desc) VALUES('חבילות')
+
+
 
 

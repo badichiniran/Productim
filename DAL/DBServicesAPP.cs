@@ -117,28 +117,26 @@ namespace Productim.DAL
 
         }
 
-
-
-        public DataTable insertProduct(Product p)
+        public void insertProductToList(Product p)
         {
             SqlConnection con;
 
             try
             {
                 con = connect();
-                da = new SqlDataAdapter(SQLQueries.insertProduct(p), con);
+                da = new SqlDataAdapter(SQLQueries.insertProductToList(p), con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
-                dt = ds.Tables["Prodects"];
+                dt = ds.Tables["Products"];
 
             }
             catch (Exception ex)
             {
-                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: insertProduct(), exeption message: " + ex.Message);
+               
                 throw ex;
             }
             disconnect(con);
-            return dt;
+            
 
         }
 

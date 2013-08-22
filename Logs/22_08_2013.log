@@ -48,3 +48,5 @@ Invalid column name 'Prodect_desc'.
 Invalid column name 'Prodect_desc'.
 22/08/2013 17:51:08 ERROR [24]	 page :InjuredPet.aspx.cs, the exeption message is : Invalid column name 'Prodect_id'.
 Invalid column name 'Prodect_desc'.
+22/08/2013 20:47:22 ERROR [26]	 page :InjuredPet_Incident.aspx.cs, the exeption message is : Conversion failed when converting the varchar value '@tmpList_id' to data type int.
+22/08/2013 20:52:50 ERROR [24]	 page :InjuredPet_Incident.aspx.cs, the exeption message is : Conversion failed when converting the varchar value '@tmpList_id' to data type int.

@@ -24,11 +24,11 @@ namespace Productim
             get { return product_id; }
             set { product_id = value; }
         }
-        string product_name;
-        public string Product_name
+        string units;
+        public string Units
         {
-            get { return product_name; }
-            set { product_name = value; }
+            get { return units; }
+            set { units = value; }
         }
 
         string product_amount;
@@ -38,25 +38,21 @@ namespace Productim
             set { product_amount = value; }
         }
 
-        string productType_id;
-        public string ProductType_id
+        string comment;
+        public string Comment
         {
-            get { return productType_id; }
-            set { productType_id = value; }
+            get { return comment; }
+            set { comment = value; }
         }
 
-        public void insertProduct()
+        string userName;
+        public string UserName
         {
-            try
-            {
-                dbs.insertProduct(this);
-            }
-            catch
-            {
-                throw;
-            }
-
+            get { return userName; }
+            set { userName = value; }
         }
+
+     
 
 
         public void RemoveProduct()

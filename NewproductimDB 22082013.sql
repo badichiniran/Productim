@@ -26,22 +26,24 @@ List_id int identity (1,1) primary key,
 List_name nvarchar (20),
 UserName nvarchar (15),
 Creation_date datetime DEFAULT (GETDATE()),
+Is_Active bit NOT NULL DEFAULT ((0)) ,
 constraint UserName_FK foreign key (UserName) references Users  
 ) 
+
 Create table Units ( 
 Unit_id int identity (1,1) primary key,
 Unit_desc nvarchar (20),
 )
 
 Create table Product_list ( 
-Product_list int identity (1,1) primary key,
+Product_list_id int identity (1,1) primary key,
 List_id int,
 Product_id int, 
 Product_amount int,
 Unit_id int,
 Price int,
 Comment nvarchar (20),
-Is_purchased bit NOT NULL DEFAULT ((0)) ,
+Is_purchased bit NOT NULL DEFAULT ((1)) ,
 
 constraint List_id_FK foreign key (List_id) references List ,
 constraint Product_id_FK foreign key (Product_id) references Products ,

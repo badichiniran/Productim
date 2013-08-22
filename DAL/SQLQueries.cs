@@ -33,10 +33,17 @@ namespace Productim.DAL
             return "SELECT Product_id,Product_desc FROM Products";
         }
 
-        public static String insertProduct(Product p)
+        public static String insertProductToList(Product p)
         {
-            string insertProduct = " INSERT INTO products (product_name,product_amount,ProductType_id) VALUES ('" + p.Product_name + "','" + p.Product_amount + "','" + p.ProductType_id + "')";
-            return insertProduct;
+            String command;
+            string getUserList = "DECLARE @tmpList_id int SET @tmpList_id = (select List_id from List where UserName='"+p.UserName+"' and  Is_Active=1 )";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("Values({0}, '{1}', '{2}' , '{3}' , '{4}'  )","@tmpList_id",p.Product_id, p.Product_amount,p.Units,p.Comment);
+            String prefix = "INSERT INTO Product_list " + "( List_id, Product_id,Product_amount,Unit_id,Comment) ";
+
+            command = getUserList+ prefix + sb.ToString();
+
+            return command;
         }
 
         public static String ShowShoppingList()
