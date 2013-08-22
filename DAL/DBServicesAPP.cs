@@ -1,0 +1,190 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.SqlClient;
+using System.Data;
+using System.Web.Configuration;
+using Productim.Classes;
+
+namespace Productim.DAL
+{
+    public class DBServicesAPP
+    {
+        public SqlDataAdapter da;
+        public DataTable dt;
+        public string connectionString;
+        public DBServicesAPP()
+        {
+            connectionString = WebConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+        }
+
+        public SqlConnection connect()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(connectionString);
+                con.Open();
+                return con;
+            }
+            catch (Exception ex)
+            {
+                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: connect(), exeption message: " + ex.Message);
+                throw;
+            }
+        }
+
+        public void disconnect(SqlConnection con)
+        {
+            if (con != null)
+            {
+                try
+                {
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: disconnect(), exeption message: " + ex.Message);
+                    throw;
+                }
+            }
+        }
+
+        public DataTable getPass(string UserName)
+        {
+            SqlConnection con;
+            try
+            {
+                con = connect(); // open the connection to the database/
+                da = new SqlDataAdapter(SQLQueries.getPass(UserName), con); // create the data adapter
+                DataSet ds = new DataSet("igroup29_test1DS"); // create a DataSet and give it a name (not mandatory) as defualt it will be the same name as the DB
+                da.Fill(ds);       // Fill the datatable (in the dataset), using the Select command 
+                dt = ds.Tables[0];     // point to the cars table , which is the only table in this case
+
+            }
+            catch (Exception ex)
+            {
+                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: getVolonteerPass(), exeption message: " + ex.Message);
+                throw ex;
+            }
+            disconnect(con);
+            return dt;
+        }
+
+
+
+
+
+        public DataTable getProductTypes()
+        {
+            SqlConnection con;
+
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.ProductTypes(), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+
+            }
+            catch (Exception ex)
+            {
+                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: getAnimalTypes(), exeption message: " + ex.Message);
+                throw ex;
+            }
+            disconnect(con);
+            return dt;
+
+        }
+
+
+
+
+        public DataTable insertProduct(Product p)
+        {
+            SqlConnection con;
+
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.insertProduct(p), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dt = ds.Tables["Prodects"];
+
+            }
+            catch (Exception ex)
+            {
+                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: insertProduct(), exeption message: " + ex.Message);
+                throw ex;
+            }
+            disconnect(con);
+            return dt;
+
+        }
+
+        public DataTable ShowShoppingList()
+        {
+
+            SqlConnection con;
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.ShowShoppingList(), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+
+            }
+            catch (Exception ex)
+            {
+                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: ShowShoppingList(), exeption message: " + ex.Message);
+                throw ex;
+            }
+            disconnect(con);
+            return dt;
+        }
+
+        public DataTable ShowShoppingList_byType(string ProductType)
+        {
+
+            SqlConnection con;
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.ShowShoppingList_byType(ProductType), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+
+            }
+            catch (Exception ex)
+            {
+                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: getVeg_ShoppingList(), exeption message: " + ex.Message);
+                throw ex;
+            }
+            disconnect(con);
+            return dt;
+        }
+        public void RemoveProduct(Product p)
+        {
+
+            SqlConnection con;
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.RemoveProduct(p), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+            }
+            catch (Exception ex)
+            {
+                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: RemoveProduct(), exeption message: " + ex.Message);
+                throw ex;
+            }
+            disconnect(con);
+        }
+    }
+}

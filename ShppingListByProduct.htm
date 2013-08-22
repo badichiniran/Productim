@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" rel="stylesheet" />
+<!--    <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>-->
+        	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+    <style type="text/css">
+        #contentId {text-align:center;}
+                .style1
+        {
+            font-size: 22pt;
+        }
+        .style2
+        {
+            font-size: 17pt;
+        }
+    </style>
+
+        <script type="text/javascript">
+    
+         $(document).bind('pageshow', function () {
+
+             jQuery.support.cors = true;
+         });
+
+         var ProductType = window.localStorage.getItem("ProductType")
+             $.ajax
+             ({
+                 type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
+                 url: "BL/ShowShoppingList.aspx",
+                 //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/ShowShoppingList.aspx",
+                 data: { 'ProductType': ProductType, },
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (res) {
+                     resLenght = res["ShoppingList"].length;
+                     CreateTable(resLenght, res["ShoppingList"]);
+                 }, // success
+                 error: function (error) {
+                     alert("שגיאה בדף");
+                 } //error
+             });// ajax
+        
+         function CreateTable(lenght, requestName) {
+             var tbl = "";
+             tableArr = new Array(lenght)
+             for (var i = 0; i < lenght; i++) {
+                 tableArr[i] = new Array(lenght);
+             }
+             tbl += "<table style='width:100%'>";
+             for (var p = 0; p < lenght; p++) {
+                 tbl += "<tr>";
+                 for (var j = 0; j < 1; j++) {
+                     if (p == 0 && j == 0) {
+                         tbl += "<td style='color:blue'><b><u>הסר</u></b></td>";
+                      
+                         tbl += "<td colspan='2' style='color:blue;' ><b><u>" + "שם" + "</u></b></td>";
+                         tbl += "<td colspan='2' style='color:blue;'><b><u>" + "כמות" + "</u></b></td>";
+                         tbl += "</tr>";
+                         tbl += "<tr>";
+                     }
+                     if (p % 2 == 0) {
+                         tbl += "<td  style='color:blue;'><input type='button' name='radioBTN' id='radioBTN" + p + "'  onclick='RequestActivity(" + requestName[p].Prodect_id + ")' value=הסר></td>";
+                        
+                         tbl += "<td colspan='2' style='color:blue;'>" + requestName[p].Prodect_name + "</td>";
+                         tbl += "<td colspan='2' style='color:blue;'>" + requestName[p].Prodect_amount + "</td>";
+
+                     }
+                     else {
+                         tbl += "<td style='color:blue; background-color:White'><input type='button' name='radioBTN' id='radioBTN" + p + "'onclick='RequestActivity(" + requestName[p].Prodect_id + ")' value=הסר></td>";
+                         tbl += "<td colspan='2' style='color:blue; background-color:White'>" + requestName[p].Prodect_name + "</td>";
+                         tbl += "<td colspan='2' style='color:blue; background-color:White'>" + requestName[p].Prodect_amount + "</td>";
+                     }
+                 }
+                 tbl += "</tr>";
+             }
+             tbl += "</table>";
+
+             var x = document.getElementById("ActivitiesTable");
+             x.innerHTML = tbl;
+         } //end CreateTable()
+
+         function RequestActivity(number) {
+             //            var Volunteer_id = window.localStorage.getItem("workerId");
+             var Prodect_id = number;
+
+
+             Load1();
+
+             $.ajax
+             ({
+                 type: "GET",
+                url: "BL/RemoveProduct.aspx",
+                 //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/RemoveProduct.aspx",
+                 data: { 'Prodect_id': Prodect_id },
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "text",
+                 success: function (res) {
+                     UnLoad1();
+                     alert("מוצר הוסר מהרשימה");
+                     window.location.reload('ShppingListByProduct.htm', 'pop', true, true);
+
+                 }, // success
+                 error: function (error) {
+                     UnLoad1();
+                     if (error.status == 999) {
+                         alert("הינך רשום לפעילות זו. אנא בחר פעילות אחרת");
+                     }
+                     if (error.status == 1) {
+                         alert("אנא נסה שוב");
+                     }
+                 } //error
+             });    // ajax
+
+         }  //end RequestActivity() 
+
+
+         function back() {
+             window.location.replace('ShoppingList.htm', 'pop', true, true);
+         }
+
+         function Load1() {
+             $.mobile.loading('show', {
+                 text: "שומר פרטים",
+                 theme: 'b',
+                 textVisible: true
+             });
+         }
+
+         function UnLoad1() {
+             $.mobile.loading('hide');
+         } // Unload
+
+
+
+
+
+        $.ajax({
+            type: "GET",
+            url: "BL/GetProductTypes.aspx",
+            //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/GetProductTypes.aspx",
+            data: {},
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (res) {
+                populateDDL("ProductTypeDDL", res["ProductTypes"]);
+
+            }, // success
+            error: function (error) {
+                alert("בעיה בטעינת הדף, אנא נסה שנית במועד מאוחר יותר");
+            } //error
+        }); // ajax
+
+        function populateDDL(Name, data) {
+            var select = document.getElementById(Name);
+            for (var i = 0; i < data.length; i++) {
+                var d = data[i];
+                select.options.add(new Option(d.Name, d.Code));
+            }
+        }
+
+        function AddProduct() {
+            var Prodect_amount = $('#Prodect_amountDDL').val();
+            var Prodect_name = $('#Prodect_name').val();
+            var ProductType_id = $('#ProductTypeDDL').val();
+
+            $.ajax({
+                type: "GET",
+                url: "BL/InsertProduct.aspx",
+                //url: "http://proj.ruppin.ac.il/igroup29/test1/BL/InsertProduct.aspx",
+                data:
+                     { 'Prodect_name': Prodect_name, 'Prodect_amount': Prodect_amount, 'ProductType_id': ProductType_id },
+                contentType: "application/json; charset=utf-8",
+                dataType: "text",
+                success: function (res) {
+                    UnLoad1();
+                    alert("מוצר הוסף בהצלחה")
+                    //                    window.location.replace('mainPage.htm', 'slide', true, true);
+                }, // success
+                error: function (error) {
+                    UnLoad1();
+                    //                    if (error.status == 1) {
+                    //                        alert("אנא בחר חיה");
+                    //                    }
+                    alert("שגיאה. אנא נסה שוב")
+                } //error
+            });   // ajax
+        } //AddProduct()
+        </script>
+</head>
+<body>
+
+ <!---------------------------------------------------List--------------------------------------------------->
+    <div data-role="page"  data-theme="e" id="List">
+
+    <div data-role="header" style="font-size:large; text-align:center">
+ Easy Shopping
+
+     </div><!-- /header -->    
+  
+	<div data-role="content" id = "Div2">
+        <h2 style="text-align: center; color: Blue">
+            רשימת קניות</h2>
+ <p dir="rtl" id="ActivitiesTable" style=" text-align:center; height: auto; width: 100%"></p>
+
+	</div><!-- /content -->
+
+    <div data-role="footer" id="Div3" style="text-align: left" data-position="fixed">
+            <a  href="#" data-role="button" data-icon="back" onclick="back()" >חזרה</a>
+                        <a href="#InsertProducts" data-role="button" data-rel="dialog" data-transition="flip" data-icon="plus">הוסף מוצר</a>
+        </div><!-- /footer -->
+        
+</div><!-- /page -->
+
+
+    <!--------------------------------------------------- InsertProducts --------------------------------------------------->
+    <div data-role="page" data-theme="e" id="InsertProducts" style="height: 100%;">
+        <div data-role="header" dir="rtl" style="height: 10%; text-align: center;">
+            <p>
+                הוסף מוצר
+            </p>
+        <!-- /header -->
+        <div data-role="content">
+            <table style="width: 100%;height: 90%; text-align: center; border: 1px; font-size: medium; font-weight: bold"
+                cellspacing="12">
+                <tr>
+                    <td>
+                        תיאור
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style1" dir="rtl">
+                        <input id="Prodect_name" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        בחר סוג מוצר
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="ProductTypeDDL">
+                            <option></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                        בחר כמות
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style1">
+                        <select id="Prodect_amountDDL" name="D2">
+                            <option value=""></option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">
+                        <p>
+                            <a href="#" data-role="button" data-icon="check" data-inline="true" onclick="AddProduct()">הוסף מוצר</a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- /content -->
+    </div>
+    <!-- /page -->
+        
+        
+</body>
+</html>

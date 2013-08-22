@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{63A68FE0-38B8-4365-B1A6-300E172DA509}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Productim</RootNamespace>
+    <AssemblyName>Productim</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BL\GetProductTypes.aspx" />
+    <Content Include="BL\InsertProduct.aspx" />
+    <Content Include="BL\loginPage.aspx" />
+    <Content Include="BL\RemoveProduct.aspx" />
+    <Content Include="BL\ShowShoppingList.aspx" />
+    <Content Include="images\Adopt-A-Pet.png" />
+    <Content Include="images\background.jpg" />
+    <Content Include="images\background1.jpg" />
+    <Content Include="images\background8.jpg" />
+    <Content Include="images\blank.jpg" />
+    <Content Include="images\DogWolks.jpg" />
+    <Content Include="images\Dog_walks_man.gif" />
+    <Content Include="images\Dog_walks_man.png" />
+    <Content Include="images\images.jpg" />
+    <Content Include="images\injured_cat_cartoon-200hi.jpg" />
+    <Content Include="images\location.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\lost_dog.jpg" />
+    <Content Include="images\MimetypeScheduleIcon.png" />
+    <Content Include="images\onLineRentgenIcon.jpg" />
+    <Content Include="images\onLineRentgenIcon.png" />
+    <Content Include="images\qrreader.jpg" />
+    <Content Include="images\qrreader.png" />
+    <Content Include="images\schedule.png" />
+    <Content Include="images\ShabatImuts.jpg" />
+    <Content Include="images\ShabatImuts.png" />
+    <Content Include="images\shabatImutz1.jpg" />
+    <Content Include="images\shabatImutz1.png" />
+    <Content Include="images\ShoppingList.jpg" />
+    <Content Include="images\SidurShabtImuts.jpg" />
+    <Content Include="images\SidurShvui.jpg" />
+    <Content Include="images\stock.jpg" />
+    <Content Include="images\warning.png" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="index.html" />
+    <Content Include="mainPage.htm" />
+    <Content Include="ShoppingList.htm" />
+    <Content Include="ShppingListByProduct.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BL\GetProductTypes.aspx.cs">
+      <DependentUpon>GetProductTypes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\GetProductTypes.aspx.designer.cs">
+      <DependentUpon>GetProductTypes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BL\InsertProduct.aspx.cs">
+      <DependentUpon>InsertProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\InsertProduct.aspx.designer.cs">
+      <DependentUpon>InsertProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BL\loginPage.aspx.cs">
+      <DependentUpon>loginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\loginPage.aspx.designer.cs">
+      <DependentUpon>loginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BL\RemoveProduct.aspx.cs">
+      <DependentUpon>RemoveProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\RemoveProduct.aspx.designer.cs">
+      <DependentUpon>RemoveProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BL\ShowShoppingList.aspx.cs">
+      <DependentUpon>ShowShoppingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\ShowShoppingList.aspx.designer.cs">
+      <DependentUpon>ShowShoppingList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Logger.cs" />
+    <Compile Include="DAL\DBServicesAPP.cs" />
+    <Compile Include="DAL\SQLQueries.cs" />
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4250</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
