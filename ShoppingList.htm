@@ -25,13 +25,54 @@
 
             jQuery.support.cors = true;
         });
+         var UserName = window.localStorage.getItem("UserId")
+        $.ajax
+             ({
+                 type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
+                 url: "BL/ShowShoppingList.aspx",
+               // url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
+                 data: { 'UserName': UserName, },
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "json",
+                 success: function (info) {
+                    fillDynamicList(info);
+                 }, // success
+                 error: function (error) {
+                     alert("שגיאה בדף");
+                 } //error
+             });// ajax
+        
 
+        //{"ShoppingList":[{"Product_list_id":"4","Product_desc":"אורז","Product_category_desc":"מזון","Unit_desc":"קילוגרם","Comment":"פרסי","Is_purchased":"False","Product_amount":"2"},{"Product_list_id":"5","Product_desc":"סתם","Product_category_desc":"בשר דגים וקפואים","Unit_desc":"יחידות","Comment":"לינגוויני","Is_purchased":"False","Product_amount":"2"}]}
+                function fillDynamicList(info) {
+                    var li = "";
+                
+                   for (var key in info) 
+                     li += '<li><a href="#" id=ID"' + info[key].Product_list_id + '" class="info-go">' + info[key].Product_desc + '</a></li>';
 
-        function showList(ProductType) {
+            
+                                //append list to ul
+                    $("#prof-list").append(li).promise().done(function () {
+                        //wait for append to finish - thats why you use a promise()
+                        //done() will run after append is done
+                        //add the click event for the redirection to happen to #details-page
+                        $(this).on("click", ".info-go", function (e) {
+                            e.preventDefault();
+                            //store the information in the next page's data
+                          //  $("#details-page").data("info", info[this.id]);
+                            //change the page # to second page. 
+                            //Now the URL in the address bar will read index.html#details-page
+                            //where #details-page is the "id" of the second page
+                            //we're gonna redirect to that now using changePage() method
+                           // $.mobile.changePage("#details-page");
+                        });
 
-            window.localStorage.setItem("ProductType", ProductType);
-            window.location.replace('ShppingListByProduct.htm', 'pop', true, true);
-        }
+                        //refresh list to enhance its styling.
+                        $(this).listview("refresh");
+                    });
+            
+             }
+
 
 
 
@@ -42,34 +83,18 @@
     </script>
 </head>
 <body>
-    <!---------------------------------------------------shopping list--------------------------------------------------->
-    <div data-role="page" data-theme="e" id="ActivityDogTour1">
-        <div data-role="header" style="font-size: large; text-align: center">
-           רשימת קניות
-            <label id="requestCodeLBL">
-            </label>
-        </div>
-        <!-- /header -->
+<div data-role="page" id="info-page">
+    <div data-role="header" data-theme="b">
+         <h1> רשימת הקניות שלי</h1>
+         
 
-
-
-        <div data-role="content" id="contentId">
-         					<fieldset data-role="controlgroup" data-iconpos="right" >
-				
-						<input type="checkbox" name="checkbox-v-6b" id="checkbox-v-6b">
-						<label for="checkbox-v-6b" >Two</label>
-                       
-
-					</fieldset>  
-        </div>
-
-			
-        <!-- /content -->
-        <div data-role="footer" id="footer_div" style="text-align: left" data-position="fixed">
-            <a href="#" data-role="button" data-icon="back" onclick="back()">חזרה</a>
-        </div>
-        <!-- /footer -->
     </div>
-    <!-- /page -->
+    <div data-role="content">
+        <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true"  data-filter="true">
+            
+          
+        </ul>
+    </div>
+</div>
 </body>
 </html>

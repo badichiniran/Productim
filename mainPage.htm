@@ -57,7 +57,10 @@
                 }
                 if (x == 2) {
                     window.location.replace('ShoppingList.htm', 'flip', true, true);
-                }
+                } 
+                if (x == 3) {
+                    window.location.replace('SelectProducts.htm', 'flip', true, true);
+                } 
             }
 
             else {
@@ -71,8 +74,8 @@
             var password = $('#pssTXT').val();
             $.ajax({
                 type: "GET",
-               url: "BL/loginPage.aspx",
-               //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/loginPage.aspx",
+               //url: "BL/loginPage.aspx",
+              url: "http://proj.ruppin.ac.il/igroup29/prod/BL/loginPage.aspx",
                 data: { 'id': id, 'password': password },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -144,8 +147,8 @@
 
             $.ajax({
                 type: "GET",
-               url: "BL/InsertProduct.aspx",
-                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+               //url: "BL/InsertProduct.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                 data:
                      { 'Prodect_name': Prodect_name, 'Prodect_amount': Prodect_amount, 'ProductType_id': ProductType_id },
                 contentType: "application/json; charset=utf-8",
@@ -210,7 +213,7 @@
                         <a href="" data-rel="popup" data-position-to="window" data-transition="flip" rel="external"
                             onclick="RediirectToPage(3)">
                             <img src="images/images.jpg" style="width: 105px; height: 105px" /></a></br>
-                        צפה ברשימה
+                       הכנס לרשימה
                     </td>
                 </tr>
             </table>

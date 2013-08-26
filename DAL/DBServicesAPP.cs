@@ -162,14 +162,14 @@ namespace Productim.DAL
             return dt;
         }
 
-        public DataTable ShowShoppingList_byType(string ProductType)
+        public DataTable ShowShoppingList_byUserName(string UserName)
         {
 
             SqlConnection con;
             try
             {
                 con = connect();
-                da = new SqlDataAdapter(SQLQueries.ShowShoppingList_byType(ProductType), con);
+                da = new SqlDataAdapter(SQLQueries.ShowShoppingList_byUserName(UserName), con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 dt = ds.Tables[0];

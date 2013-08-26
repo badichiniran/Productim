@@ -31,8 +31,8 @@ namespace Productim.BL
 
             try
             {
-                string ProductType = requestQuery["ProductType"];
-                ShoppingList = dbs.ShowShoppingList_byType(ProductType);
+                string UserName = requestQuery["UserName"];
+                ShoppingList = dbs.ShowShoppingList_byUserName(UserName);
 
             }
 
@@ -42,8 +42,8 @@ namespace Productim.BL
                 throw;
             }
             string jsonStringShoppingList = serializer.Serialize(SerializeTable(ShoppingList));
-            string jsonString = "{\"ShoppingList\":" + jsonStringShoppingList + "}";
-            Response.Write(jsonString);
+           
+            Response.Write(jsonStringShoppingList);
             Response.End();
 
         }

@@ -52,10 +52,10 @@ namespace Productim.DAL
             return showProducts;
         }
 
-        public static String ShowShoppingList_byType(string productType)
+        public static String ShowShoppingList_byUserName(string UserName)
         {
-            string showProducts = "  SELECT dbo.products.product_id,dbo.ProductTypes.ProductType_desc, dbo.products.product_name, dbo.products.product_amount FROM dbo.products INNER JOIN  dbo.ProductTypes ON dbo.products.ProductType_id = dbo.ProductTypes.ProductType_id WHERE products.isPurchesd=0 and dbo.ProductTypes.ProductType_id=" + productType + " ORDER BY dbo.products.product_name desc";
-            return showProducts;
+
+            return "SELECT Product_list_id,Product_desc,Product_category_desc,Unit_desc,Comment,Is_purchased,Product_amount FROM View_ShowProductList  where UserName='" + UserName + "'";
         }
 
         public static String RemoveProduct(Product p)

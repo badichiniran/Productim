@@ -2,3 +2,4 @@ C:\Users\niran\Desktop\Productim\Productim\Productim\bin\Productim.dll
 C:\Users\niran\Desktop\Productim\Productim\Productim\bin\Productim.pdb
 C:\Users\niran\Desktop\Productim\Productim\Productim\obj\Debug\Productim.dll
 C:\Users\niran\Desktop\Productim\Productim\Productim\obj\Debug\Productim.pdb
+C:\Users\niran\Desktop\productim\productim\Productim\obj\Debug\Productim.csprojResolveAssemblyReference.cache
