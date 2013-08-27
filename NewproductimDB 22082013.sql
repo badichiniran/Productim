@@ -43,7 +43,7 @@ Product_amount int,
 Unit_id int,
 Price int,
 Comment nvarchar (20),
-Is_purchased bit NOT NULL DEFAULT ((1)) ,
+Is_purchased bit NOT NULL DEFAULT ((0)) ,
 
 constraint List_id_FK foreign key (List_id) references List ,
 constraint Product_id_FK foreign key (Product_id) references Products ,

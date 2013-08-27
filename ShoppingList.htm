@@ -29,8 +29,8 @@
         $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                 url: "BL/ShowShoppingList.aspx",
-               // url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
+                 //url: "BL/ShowShoppingList.aspx",
+               url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
                  data: { 'UserName': UserName, },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
@@ -90,11 +90,18 @@
 
     </div>
     <div data-role="content">
-        <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true"  data-filter="true">
+        <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true" >
             
           
         </ul>
     </div>
+
+
+            <div data-role="footer" style="text-align: left" data-position="fixed">
+            <a href="#" data-role="button" onclick="back()" data-icon="back">חזרה</a>
+
+        </div>
+        <!-- /footer -->
 </div>
 </body>
 </html>

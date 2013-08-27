@@ -148,7 +148,9 @@
              function UnLoad1() {
                  $.mobile.loading('hide');
              } // Unload
-
+             function back() {
+                 window.location.replace('mainPage.htm', 'pop', true, true);
+             }
 
 </script>
    
@@ -168,6 +170,11 @@
             <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>
         </ul>
     </div>
+                <div data-role="footer" style="text-align: left" data-position="fixed">
+            <a href="#" data-role="button" onclick="back()" data-icon="back">חזרה</a>
+
+        </div>
+        <!-- /footer -->
 </div>
 <!--second page -->
 <div data-role="page" id="details-page">
@@ -183,7 +190,7 @@
                 
             
             <td >
-                כמות<input type="range" id="Product_amount" name="slider-fill"  value="1" min="0" max="10" data-highlight="true" />
+                כמות<input type="range" id="Product_amount" name="slider-fill"  value="1" min="1" max="10" data-highlight="true" />
             </td>
             <td>
                 <select id="Units">
