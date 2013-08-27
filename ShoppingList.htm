@@ -48,7 +48,8 @@
                     var li = "";
                 
                    for (var key in info) 
-                     li += '<li><a href="#" id=ID"' + info[key].Product_list_id + '" class="info-go">' + info[key].Product_desc + '</a></li>';
+//                     li += '<li><a href="#" id=ID"' + info[key].Product_list_id + '" class="info-go">' + info[key].Product_desc + '</a></li>';
+                        li+=' <input type="checkbox" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + '</label>';
 
             
                                 //append list to ul
@@ -68,7 +69,7 @@
                         });
 
                         //refresh list to enhance its styling.
-                        $(this).listview("refresh");
+                       $("#info-page").trigger('create');
                     });
             
              }
@@ -90,10 +91,14 @@
 
     </div>
     <div data-role="content">
-        <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true" >
-            
+<!--        <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true" >
+             
           
-        </ul>
+        </ul>-->
+
+        <fieldset data-role="controlgroup" data-iconpos="right" id="prof-list">
+
+          </fieldset>
     </div>
 
 
