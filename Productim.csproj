@@ -51,6 +51,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BL\FinishShopping.aspx" />
     <Content Include="BL\GetProducts.aspx" />
     <Content Include="BL\GetProductTypes.aspx" />
     <Content Include="BL\InsertProduct.aspx" />
@@ -106,6 +107,13 @@
     <Content Include="ShppingListByProduct.htm" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\FinishShopping.aspx.cs">
+      <DependentUpon>FinishShopping.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\FinishShopping.aspx.designer.cs">
+      <DependentUpon>FinishShopping.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BL\GetProducts.aspx.cs">
       <DependentUpon>GetProducts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

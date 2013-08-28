@@ -202,5 +202,26 @@ namespace Productim.DAL
             }
             disconnect(con);
         }
+
+
+        public void FinishShopping(string UserName)
+        {
+
+            SqlConnection con;
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.FinishShopping(UserName), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+            }
+            catch (Exception ex)
+            {
+              
+                throw ex;
+            }
+            disconnect(con);
+        }
     }
 }

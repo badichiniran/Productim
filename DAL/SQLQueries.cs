@@ -64,7 +64,16 @@ namespace Productim.DAL
             return removeProduct;
         }
 
+        public static String FinishShopping(string UserName)
+        {
+            String command;
+           // string getUserList = "DECLARE @tmpList_id int SET @tmpList_id = (select List_id from List where UserName='" + UserName + "' and  Is_Active=1 )";
+            string updateList = " UPDATE [List] SET [Is_Active] = 0 WHERE UserName='"+UserName+"' and Is_Active=1 ";
+            string insertNewList=" INSERT INTO [List] (UserName) VALUES('"+UserName+"') ";
+            command = updateList + insertNewList;
 
+            return command;
+        }
 
     }
 }
