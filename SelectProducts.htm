@@ -29,8 +29,8 @@
             
                 $.ajax({
                     type: "GET",
-                    //url: "BL/GetProducts.aspx",
-                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
+                    url: "BL/GetProducts.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
                     data: {},
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -114,8 +114,8 @@
                  var UserName = window.localStorage.getItem("UserId")
                  $.ajax({
                      type: "GET",
-                     //url: "BL/InsertProduct.aspx",
-                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+                     url: "BL/InsertProduct.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                      data:
                      { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserName': UserName },
                      contentType: "application/json; charset=utf-8",
@@ -158,69 +158,66 @@
 </head>
 <body >
 <!--first page -->
-<div data-role="page" id="info-page">
-    <div data-role="header" data-theme="b">
-         <h1> Information</h1>
-         
-
-    </div>
-    <div data-role="content">
-        <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true"  data-filter="true">
-            
-            <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>
-        </ul>
-    </div>
-                <div data-role="footer" style="text-align: left" data-position="fixed">
+    <div data-role="page" id="info-page">
+        <div data-role="header" data-theme="b">
+            <h1>
+                Information</h1>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true"
+                data-filter="true">
+                <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>
+            </ul>
+        </div>
+        <div data-role="footer" style="text-align: left" data-position="fixed">
             <a href="#" data-role="button" onclick="back()" data-icon="back">חזרה</a>
-
         </div>
         <!-- /footer -->
-</div>
-<!--second page -->
-<div data-role="page" id="details-page">
-    <div data-role="header" data-theme="b"><a href="#" data-rel="back" data-role="button">Go back</a>
-
-         <h1>בחר כמות</h1>
-
     </div>
-    <div data-role="content"></div>
-    <table>
-        <tr>
-                   
-                
-            
-            <td >
-                כמות<input type="range" id="Product_amount" name="slider-fill"  value="1" min="1" max="10" data-highlight="true" />
-            </td>
-            <td>
-                <select id="Units">
-                    <option value="1">יחידות</option>
-                    <option value="2">קילוגרם</option>
-                    <option value="3">גרם</option>
-                    <option value="4">חבילות</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            
-              
-            
-            <td dir="rtl">
-                 הערה <input id="Comment" type="text"  />
-            </td>
-        </tr>
-
-                        <tr>
+<!--second page -->
+    <div data-role="page" id="details-page">
+        <div data-role="header" data-position="fixed">
+            <a href="#" data-role="button" data-icon="plus" onclick="AddProduct()">הוסף לרשימה</a>
+             
+                <h1>
+                    פרטי מוצר</h1>
+        </div>
+        <div data-role="content">  </div>
+            <table>
+                <tr>
+                    <td>
+                        כמות<input type="range" id="Product_amount" name="slider-fill" value="1" min="1"
+                            max="10" data-highlight="true" />
+                    </td>
+                    <td>
+                        <select id="Units">
+                            <option value="1">יחידות</option>
+                            <option value="2">קילוגרם</option>
+                            <option value="3">גרם</option>
+                            <option value="4">חבילות</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="rtl">
+                        הערה
+                        <input id="Comment" type="text" />
+                    </td>
+                </tr>
+                <tr>
                     <td style="text-align: center">
                         <p>
-                            <a href="#" data-role="button" data-icon="check" data-inline="true" onclick="AddProduct()">הוסף מוצר</a>
+                            <a href="#" data-role="button" data-icon="check" data-inline="true" onclick="AddProduct()">
+                                הוסף מוצר</a>
                         </p>
                     </td>
                 </tr>
-    </table>
-
-</div>
-
-
+            </table>
+      
+        <div data-role="footer" style="text-align: left" data-position="fixed">
+            <a href="#" data-rel="back" data-role="button" data-icon="back">חזרה</a>
+        </div>
+       
+           </div>
 </body>
 </html>
