@@ -48,11 +48,14 @@
 
         //{"ShoppingList":[{"Product_list_id":"4","Product_desc":"אורז","Product_category_desc":"מזון","Unit_desc":"קילוגרם","Comment":"פרסי","Is_purchased":"False","Product_amount":"2"},{"Product_list_id":"5","Product_desc":"סתם","Product_category_desc":"בשר דגים וקפואים","Unit_desc":"יחידות","Comment":"לינגוויני","Is_purchased":"False","Product_amount":"2"}]}
                 function fillDynamicList(info) {
-                    var li = "";
-                
-                   for (var key in info) 
-                        li+=' <input type="checkbox" name="chkindia" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + '</label>';
+                    var li ="";
+                    var Pli = "";
 
+                    for (var key in info) {
+                        if (info[key].Is_purchased == "False")
+                        li += ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + '</label>';
+                      else Pli += ' <input type="checkbox" checked="checked" name="chk" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + '</label>';
+                    }
             
                                 //append list to ul
                     $("#prof-list").append(li).promise().done(function () {
@@ -72,7 +75,29 @@
 
                         //refresh list to enhance its styling.
                        $("#info-page").trigger('create');
-                    });
+                   });
+
+
+
+                   //append list to ul
+                   $("#prof-list1").append(Pli).promise().done(function () {
+                       //wait for append to finish - thats why you use a promise()
+                       //done() will run after append is done
+                       //add the click event for the redirection to happen to #details-page
+                       $(this).on("click", ".info-go", function (e) {
+                           e.preventDefault();
+                           //store the information in the next page's data
+                           //  $("#details-page").data("info", info[this.id]);
+                           //change the page # to second page. 
+                           //Now the URL in the address bar will read index.html#details-page
+                           //where #details-page is the "id" of the second page
+                           //we're gonna redirect to that now using changePage() method
+                           // $.mobile.changePage("#details-page");
+                       });
+
+                       //refresh list to enhance its styling.
+                       $("#info-page").trigger('create');
+                   });
             
              }
 
@@ -128,6 +153,10 @@
 
 
         <fieldset data-role="controlgroup" data-iconpos="right" id="prof-list">
+
+          </fieldset>
+          <div data-role="header" data-theme="a">   <h1> קניתי</h1></div>
+                  <fieldset data-role="controlgroup" data-iconpos="right" id="prof-list1">
 
           </fieldset>
     </div>
