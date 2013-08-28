@@ -23,7 +23,7 @@ namespace Productim.BL
             }
             NameValueCollection requestQuery = Request.QueryString;
 
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
+           
 
            
 

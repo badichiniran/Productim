@@ -32,8 +32,8 @@
         $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                url: "BL/ShowShoppingList.aspx",
-               //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
+                //url: "BL/ShowShoppingList.aspx",
+               url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
                  data: { 'UserName': UserName},
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
@@ -121,8 +121,8 @@
                      $.ajax
              ({
                  type: "GET",
-                url: "BL/RemoveProduct.aspx",
-               //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
+                //url: "BL/RemoveProduct.aspx",
+               url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
                  data: { 'Product_list_id': Product_list_id },
                  contentType: "application/json; charset=utf-8",
                  dataType: "text",
@@ -142,8 +142,8 @@
          $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                 url: "BL/FinishShopping.aspx",
-                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
+                 //url: "BL/FinishShopping.aspx",
+                 url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
                  data: { 'UserName': UserName },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",

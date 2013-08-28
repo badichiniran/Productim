@@ -67,10 +67,12 @@ namespace Productim.DAL
         public static String FinishShopping(string UserName)
         {
             String command;
-           // string getUserList = "DECLARE @tmpList_id int SET @tmpList_id = (select List_id from List where UserName='" + UserName + "' and  Is_Active=1 )";
+            string getOldList = " DECLARE @OldList_id int SET @OldList_id = (select List_id from List where UserName='" + UserName + "' and  Is_Active=1 )";
             string updateList = " UPDATE [List] SET [Is_Active] = 0 WHERE UserName='"+UserName+"' and Is_Active=1 ";
             string insertNewList=" INSERT INTO [List] (UserName) VALUES('"+UserName+"') ";
-            command = updateList + insertNewList;
+            string getNewListId = " DECLARE @NewList_id int SET @NewList_id = (select List_id from List where UserName='" + UserName + "' and  Is_Active=1 )";
+            string updateProductListId = " UPDATE [Product_list] SET [List_id] = @NewList_id WHERE List_id=@OldList_id  and Is_purchased=0 ";
+            command = getOldList + updateList + insertNewList + getNewListId + updateProductListId;
 
             return command;
         }

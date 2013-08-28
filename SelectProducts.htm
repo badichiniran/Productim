@@ -29,8 +29,8 @@
             
                 $.ajax({
                     type: "GET",
-                    url: "BL/GetProducts.aspx",
-                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
+                    //url: "BL/GetProducts.aspx",
+                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
                     data: {},
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -114,8 +114,8 @@
                  var UserName = window.localStorage.getItem("UserId")
                  $.ajax({
                      type: "GET",
-                     url: "BL/InsertProduct.aspx",
-                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+                     //url: "BL/InsertProduct.aspx",
+                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                      data:
                      { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserName': UserName },
                      contentType: "application/json; charset=utf-8",
@@ -202,14 +202,6 @@
                     <td dir="rtl">
                         הערה
                         <input id="Comment" type="text" />
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">
-                        <p>
-                            <a href="#" data-role="button" data-icon="check" data-inline="true" onclick="AddProduct()">
-                                הוסף מוצר</a>
-                        </p>
                     </td>
                 </tr>
             </table>
