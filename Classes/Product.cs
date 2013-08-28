@@ -55,17 +55,17 @@ namespace Productim
      
 
 
-        public void RemoveProduct()
-        {
-            try
-            {
-                dbs.RemoveProduct(this);
-            }
-            catch
-            {
-                throw;
-            }
+        //public void RemoveProduct()
+        //{
+        //    try
+        //    {
+        //        dbs.RemoveProduct(this);
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
 
-        }
+        //}
     }
 }

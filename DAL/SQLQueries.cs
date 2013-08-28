@@ -58,9 +58,9 @@ namespace Productim.DAL
             return "SELECT Product_list_id,Product_desc,Product_category_desc,Unit_desc,Comment,Is_purchased,Product_amount FROM View_ShowProductList  where UserName='" + UserName + "'";
         }
 
-        public static String RemoveProduct(Product p)
+        public static String RemoveProduct(string Product_list_id)
         {
-            string removeProduct = "Update products SET isPurchesd =1 WHERE product_id ='" + p.Product_id + "'";
+            string removeProduct = "UPDATE [Product_list] SET [Is_purchased] = 1 WHERE Product_list_id in (" + Product_list_id + ")";
             return removeProduct;
         }
 

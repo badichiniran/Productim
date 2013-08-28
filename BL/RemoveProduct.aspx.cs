@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Productim.DAL;
 using System.Collections.Specialized;
 using Productim.Classes;
+using System.Text.RegularExpressions;
 
 namespace Productim.BL
 {
@@ -24,16 +25,10 @@ namespace Productim.BL
 
             try
             {
-
-                Product p = new Product()
-                {
-                    Product_id = requestQuery["Prodect_id"],
-
-
-                };
-
-                p.RemoveProduct();
-
+                string Product_list_id = requestQuery["Product_list_id"];
+               // string[] lines = Regex.Split(Product_list_id, "ID");
+                Product_list_id = Product_list_id.Replace("ID", "");
+                dbs.RemoveProduct(Product_list_id);
             }
             catch (Exception ex)
             {

@@ -11,6 +11,9 @@
     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     
+
+
+
     
 
     <style type="text/css">
@@ -31,7 +34,7 @@
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
                 url: "BL/ShowShoppingList.aspx",
                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
-                 data: { 'UserName': UserName, },
+                 data: { 'UserName': UserName},
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (info) {
@@ -48,8 +51,7 @@
                     var li = "";
                 
                    for (var key in info) 
-//                     li += '<li><a href="#" id=ID"' + info[key].Product_list_id + '" class="info-go">' + info[key].Product_desc + '</a></li>';
-                        li+=' <input type="checkbox" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + '</label>';
+                        li+=' <input type="checkbox" name="chkindia" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + '</label>';
 
             
                                 //append list to ul
@@ -80,6 +82,37 @@
         function back() {
             window.location.replace('mainPage.htm', 'pop', true, true);
         }
+
+
+ function RemoveProduct() {
+
+       
+                var Product_list_id = $("input[type=checkbox]:checked").map(
+     function () { return this.id; }).get().join(",");
+                if (Product_list_id == "") {
+                    alert("No value selected.");
+                } else {
+                    alert(Product_list_id);
+                     $.ajax
+             ({
+                 type: "GET",
+                url: "BL/RemoveProduct.aspx",
+               //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
+                 data: { 'Product_list_id': Product_list_id },
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "text",
+                 success: function (info) {
+                     alert("success RemoveProduct.aspx");
+                 }, // success
+                 error: function (error) {
+                     alert("שגיאה בדף RemoveProduct.aspx");
+                 } //error
+             });// ajax
+
+                }
+           
+
+ }
 
     </script>
 </head>

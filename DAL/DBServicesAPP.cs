@@ -183,21 +183,21 @@ namespace Productim.DAL
             disconnect(con);
             return dt;
         }
-        public void RemoveProduct(Product p)
+        public void RemoveProduct(string Product_list_id)
         {
 
             SqlConnection con;
             try
             {
                 con = connect();
-                da = new SqlDataAdapter(SQLQueries.RemoveProduct(p), con);
+                da = new SqlDataAdapter(SQLQueries.RemoveProduct(Product_list_id), con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 
             }
             catch (Exception ex)
             {
-                Logger.writeToLog(LoggerLevel.ERROR, "page :DBServicesAPP.cs, function: RemoveProduct(), exeption message: " + ex.Message);
+              
                 throw ex;
             }
             disconnect(con);

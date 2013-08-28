@@ -57,6 +57,7 @@
     <Content Include="BL\loginPage.aspx" />
     <Content Include="BL\RemoveProduct.aspx" />
     <Content Include="BL\ShowShoppingList.aspx" />
+    <Content Include="HTMLPage1.htm" />
     <Content Include="SelectProducts.htm" />
     <Content Include="images\Adopt-A-Pet.png" />
     <Content Include="images\background.jpg" />
