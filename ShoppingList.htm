@@ -182,8 +182,9 @@
 <div data-role="page" id="info-page">
     <div data-role="header" data-theme="e">
            <a href="#" data-role="button" data-icon="check" onclick="RemoveProduct()">קניתי</a>
-         <h1> רשימת הקניות שלי</h1>
-          <a href="#" data-role="button" data-icon="minus" onclick="RemoveProduct()">הסר מהרשימה</a>
+         <h1> הרשימה שלי</h1> 
+          <a href="#" data-role="button" onclick="FinishShopping()" data-icon="star">סיים</a>
+          
 
     </div>
     <div data-role="content">
@@ -201,7 +202,8 @@
 
             <div data-role="footer" style="text-align: left" data-position="fixed">
             <a href="#" data-role="button" onclick="back()" data-icon="back">חזרה</a> 
-            <a href="#" data-role="button" onclick="FinishShopping()" data-icon="star">סיים קניה</a>
+
+           <a class="ui-btn-right" href="#" data-role="button" data-icon="minus" onclick="RemoveProduct()">מחק</a>
 
         </div>
         <!-- /footer -->

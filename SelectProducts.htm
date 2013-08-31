@@ -9,19 +9,17 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-
     <style type="text/css">
         #contentId
         {
             text-align: center;
         }
-        .style1
-        {
-            font-size: 22pt;
-        }
+        
+        
         .style2
         {
-            font-size: 17pt;
+            text-align: right;
+            direction: rtl;
         }
     </style>
 
@@ -107,10 +105,10 @@
 
              function AddProduct() {
 
-             
+                 Load1();
                  var Prodect_amount = $('#Product_amount').val();
                  var Product_id = $('#Product_id').val();
-                 var Units = $('#Units').val();
+                 var Units = $("input:radio:checked").val();
                  var Comment = $('#Comment').val();
                  var UserName = window.localStorage.getItem("UserId")
                  $.ajax({
@@ -122,17 +120,13 @@
                      contentType: "application/json; charset=utf-8",
                      dataType: "text",
                      success: function (res) {
-                         alert("success-InsertProduct.aspx");
                          UnLoad1();
                          alert("מוצר הוסף בהצלחה")
-                         //window.location.replace('mainPage.htm', 'slide', true, true);
+                         window.location.replace('#info-page', 'flip', true, true);
                      }, // success
                      error: function (error) {
                          alert("error-InsertProduct.aspx");
                          UnLoad1();
-                         //                    if (error.status == 1) {
-                         //                        alert("אנא בחר חיה");
-                         //                    }
                          alert("שגיאה. אנא נסה שוב")
                      } //error
                  });   // ajax
@@ -140,7 +134,7 @@
 
              function Load1() {
                  $.mobile.loading('show', {
-                     text: "שומר פרטים",
+                     text: "מוסיף מוצר לרשימה...",
                      theme: 'b',
                      textVisible: true
                  });
@@ -157,17 +151,17 @@
    
 
 </head>
-<body >
-<!--first page -->
-    <div data-role="page" id="info-page"  data-theme="e">
-        <div data-role="header" >
+<body>
+    <!--first page -->
+    <div data-role="page" id="info-page" data-theme="e">
+        <div data-role="header">
             <h1>
                 רשימת מוצרים</h1>
         </div>
         <div data-role="content">
-            <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true" data-filter-placeholder="חפש מוצר" 
-                data-filter="true" data>
-<!--                <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>-->
+            <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true"
+                data-filter-placeholder="חפש מוצר" data-filter="true" data>
+                <!--                <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>-->
             </ul>
         </div>
         <div data-role="footer" style="text-align: left" data-position="fixed">
@@ -175,67 +169,54 @@
         </div>
         <!-- /footer -->
     </div>
-<!--second page -->
-    <div data-role="page" id="details-page"  data-theme="e" style="text-align:right">
+    <!--second page -->
+    <div data-role="page" id="details-page" data-theme="e" style="text-align: right">
         <div data-role="header" data-position="fixed">
-            <a href="#" data-role="button" data-icon="plus" onclick="AddProduct()">הוסף לרשימה</a>
-             
-                <h1>
-                    פרטי מוצר</h1>
+            <a href="#" data-role="button" data-mini="true" data-icon="plus" onclick="AddProduct()">
+                הוסף</a>
+            <h1>
+                פרטי מוצר</h1>
         </div>
-        <div data-role="content">  </div>
-            <table >
-                <tr>
-                    <td>
-
-
-
-
-                    <label for="Product_amount">בחר כמות</label>
-<input type="range" name="slider-fill" id="Product_amount" value="1" min="1" max="20" data-highlight="true" />
-
-
-<!--                        <input type="range" id="Product_amount" name="slider-fill" value="1" min="1"
-                            max="10" data-highlight="true" />כמות-->
-                    </td>
-                   <tr>
-                   <td>
-                   <br />
-
-                                           <select id="Units">
-                            <option value="1">יחידות</option>
-                            <option value="2">קילוגרם</option>
-                            <option value="3">גרם</option>
-                            <option value="4">חבילות</option>
-                        </select>
-
-<!--                    <fieldset data-role="controlgroup" data-type="horizontal" >
-                    	<input type="radio" name="Product_amount_radio1" id="Product_amount_radio1" value="1" checked="checked">
-						<label for="Product_amount_radio1">יחידות</label>
-						<input type="radio" name="Product_amount_radio2" id="Product_amount_radio2" value="2">
-						<label for="Product_amount_radio3">קילוגרם</label>
-						<input type="radio" name="Product_amount_radio3" id="Product_amount_radio3" value="3">
-						<label for="Product_amount_radio3">גרם</label>
-                        						<input type="radio" name="Product_amount_radio4" id="Product_amount_radio4" value="4">
-						<label for="Product_amount_radio4">חבילות</label>
-					</fieldset>-->
-                    </td>
-                    </tr>
-
-                    
-                </tr>
-                <tr>
-                    <td dir="rtl">
-                        הערה
-                        <input id="Comment" type="text" />
-                    </td>
-                </tr>
+        <div data-role="content" style="text-decoration: underline; text-align: center;">
+        </div>
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <input type="range" name="slider-fill" id="Product_amount" value="1" min="1" max="20"
+                        data-highlight="true" />
+                </td>
+                <td class="style2">
+                    בחר כמות:
+                </td>
+            </tr>
             </table>
-      
+<div data-role="fieldcontain" align="center" style="border-bottom-style:none">
+<br /><br />
+	    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+	         	<input type="radio" name="radio-view" id="radio-view-a" value="1" checked="checked" />
+	         	<label for="radio-view-a">יחידות</label>
+	         	<input type="radio" name="radio-view" id="radio-view-b" value="2"  />
+	         	<label for="radio-view-b">קילוגרם</label>
+	         	<input type="radio" name="radio-view" id="radio-view-c" value="3"  />
+	         	<label for="radio-view-c">גרם</label>
+	         	<input type="radio" name="radio-view" id="radio-view-d" value="4"  />
+	         	<label for="radio-view-d">חבילות</label>
+	    </fieldset>
+	</div>
+    <br />
+    <table style="width: 100%;">
+            <tr>
+                <td class="style2">
+                    <input id="Comment" type="text" />
+                </td>
+                <td class="style2">
+                    הערה:
+                </td>
+            </tr>
+        </table>
         <div data-role="footer" style="text-align: left" data-position="fixed">
             <a href="#" data-rel="back" data-role="button" data-icon="back">חזרה</a>
         </div>
-       
-           </div>
+    </div>
 </body>
 </html>
