@@ -29,7 +29,7 @@
             
                 $.ajax({
                     type: "GET",
-                    //url: "BL/GetProducts.aspx",
+                    // url: "BL/GetProducts.aspx",
                     url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
                     data: {},
                     contentType: "application/json; charset=utf-8",
@@ -107,6 +107,7 @@
 
              function AddProduct() {
 
+             
                  var Prodect_amount = $('#Product_amount').val();
                  var Product_id = $('#Product_id').val();
                  var Units = $('#Units').val();
@@ -158,15 +159,15 @@
 </head>
 <body >
 <!--first page -->
-    <div data-role="page" id="info-page">
-        <div data-role="header" data-theme="b">
+    <div data-role="page" id="info-page"  data-theme="e">
+        <div data-role="header" >
             <h1>
-                Information</h1>
+                רשימת מוצרים</h1>
         </div>
         <div data-role="content">
-            <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true"
-                data-filter="true">
-                <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>
+            <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true" data-filter-placeholder="חפש מוצר" 
+                data-filter="true" data>
+<!--                <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>-->
             </ul>
         </div>
         <div data-role="footer" style="text-align: left" data-position="fixed">
@@ -175,7 +176,7 @@
         <!-- /footer -->
     </div>
 <!--second page -->
-    <div data-role="page" id="details-page">
+    <div data-role="page" id="details-page"  data-theme="e" style="text-align:right">
         <div data-role="header" data-position="fixed">
             <a href="#" data-role="button" data-icon="plus" onclick="AddProduct()">הוסף לרשימה</a>
              
@@ -183,20 +184,45 @@
                     פרטי מוצר</h1>
         </div>
         <div data-role="content">  </div>
-            <table>
+            <table >
                 <tr>
                     <td>
-                        כמות<input type="range" id="Product_amount" name="slider-fill" value="1" min="1"
-                            max="10" data-highlight="true" />
+
+
+
+
+                    <label for="Product_amount">בחר כמות</label>
+<input type="range" name="slider-fill" id="Product_amount" value="1" min="1" max="20" data-highlight="true" />
+
+
+<!--                        <input type="range" id="Product_amount" name="slider-fill" value="1" min="1"
+                            max="10" data-highlight="true" />כמות-->
                     </td>
-                    <td>
-                        <select id="Units">
+                   <tr>
+                   <td>
+                   <br />
+
+                                           <select id="Units">
                             <option value="1">יחידות</option>
                             <option value="2">קילוגרם</option>
                             <option value="3">גרם</option>
                             <option value="4">חבילות</option>
                         </select>
+
+<!--                    <fieldset data-role="controlgroup" data-type="horizontal" >
+                    	<input type="radio" name="Product_amount_radio1" id="Product_amount_radio1" value="1" checked="checked">
+						<label for="Product_amount_radio1">יחידות</label>
+						<input type="radio" name="Product_amount_radio2" id="Product_amount_radio2" value="2">
+						<label for="Product_amount_radio3">קילוגרם</label>
+						<input type="radio" name="Product_amount_radio3" id="Product_amount_radio3" value="3">
+						<label for="Product_amount_radio3">גרם</label>
+                        						<input type="radio" name="Product_amount_radio4" id="Product_amount_radio4" value="4">
+						<label for="Product_amount_radio4">חבילות</label>
+					</fieldset>-->
                     </td>
+                    </tr>
+
+                    
                 </tr>
                 <tr>
                     <td dir="rtl">

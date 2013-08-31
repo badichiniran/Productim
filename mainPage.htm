@@ -74,7 +74,7 @@
             var password = $('#pssTXT').val();
             $.ajax({
                 type: "GET",
-               //url: "BL/loginPage.aspx",
+                // url: "BL/loginPage.aspx",
               url: "http://proj.ruppin.ac.il/igroup29/prod/BL/loginPage.aspx",
                 data: { 'id': id, 'password': password },
                 contentType: "application/json; charset=utf-8",
@@ -113,25 +113,6 @@
             jQuery.support.cors = true;
         });
 
-
-//        $.ajax({
-//            type: "GET",
-//            url: "BL/GetProductTypes.aspx",
-//            //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProductTypes.aspx",
-//            data: {},
-//            contentType: "application/json; charset=utf-8",
-//            dataType: "json",
-//            success: function (res) {
-//                alert("success-GetProductTypes.aspx");
-//                populateDDL("ProductTypeDDL", res["ProductTypes"]);
-
-//            }, // success
-//            error: function (error) {
-//                alert("error-GetProductTypes.aspx");
-//                alert("בעיה בטעינת הדף, אנא נסה שנית במועד מאוחר יותר");
-//            } //error
-//        });  // ajax
-
         function populateDDL(Name, data) {
             var select = document.getElementById(Name);
             for (var i = 0; i < data.length; i++) {
@@ -147,8 +128,8 @@
 
             $.ajax({
                 type: "GET",
-               //url: "BL/InsertProduct.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+                //url: "BL/InsertProduct.aspx",
+               url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                 data:
                      { 'Prodect_name': Prodect_name, 'Prodect_amount': Prodect_amount, 'ProductType_id': ProductType_id },
                 contentType: "application/json; charset=utf-8",
@@ -188,19 +169,13 @@
     <!---------------------------------------------------Main Page--------------------------------------------------->
     <div data-role="page" data-theme="e" id="mainPage">
         <div data-role="header" style="font-size: large; text-align: center">
-            Easy Shopping
+            
         </div>
         <!-- /header -->
         <div data-role="content" id="contentId">
             <table style="width: 100%; text-align: center; border: 1px; font-size: medium; font-weight: bold"
                 cellspacing="10">
                 <tr>
-                    <td>
-                        <a href="" data-rel="popup" data-position-to="window" data-transition="flip" rel="external"
-                            onclick="RediirectToPage(1)">
-                            <img src="images/stock.jpg" style="width: 105px; height: 105px" /></a></br>
-                        הכנס מוצר
-                    </td>
                     <td>
                         <a href="" data-rel="popup" data-position-to="window" data-transition="flip" rel="external"
                             onclick="RediirectToPage(2)">
@@ -213,7 +188,7 @@
                         <a href="" data-rel="popup" data-position-to="window" data-transition="flip" rel="external"
                             onclick="RediirectToPage(3)">
                             <img src="images/images.jpg" style="width: 105px; height: 105px" /></a></br>
-                       הכנס לרשימה
+                       הוסף מוצר לרשימה
                     </td>
                 </tr>
             </table>
@@ -265,73 +240,6 @@
         </div>
     </div>
     <!-- End page LogOut-->
-    <!--------------------------------------------------- InsertProducts --------------------------------------------------->
-    <div data-role="page" data-theme="e" id="InsertProducts">
-        <div data-role="header" style="font-size: large; text-align: center">
-            הכנס מוצר
-        </div>
-        <!-- /header -->
-        <div data-role="content">
-            <table style="width: 100%; text-align: center; border: 1px; font-size: medium; font-weight: bold"
-                cellspacing="12">
-                <tr>
-                    <td>
-                        תיאור
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style1" dir="rtl">
-                        <input id="Prodect_name" type="text" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        בחר סוג מוצר
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <select id="ProductTypeDDL">
-                            <option></option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style2">
-                        בחר כמות
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style1">
-                        <select id="Prodect_amountDDL" name="D2">
-                            <option value=""></option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align: center">
-                        <p>
-                            <a href="#" data-role="button" data-icon="check" data-inline="true" onclick="AddProduct()">הוסף מוצר</a>
-                        </p>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <!-- /content -->
-        <div data-role="footer" style="text-align: left" data-position="fixed">
-            <a href="#mainPage" data-role="button" data-icon="back">חזרה</a>
 
-        </div>
-        <!-- /footer -->
-    </div>
-    <!-- /page -->
 </body>
 </html>

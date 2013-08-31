@@ -32,8 +32,8 @@
         $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                //url: "BL/ShowShoppingList.aspx",
-               url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
+                 //url: "BL/ShowShoppingList.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
                  data: { 'UserName': UserName},
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
@@ -118,24 +118,44 @@
                     alert("No value selected.");
                 } else {
                     alert(Product_list_id);
-                     $.ajax
+                    $.ajax
              ({
                  type: "GET",
-                //url: "BL/RemoveProduct.aspx",
-               url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
+                 // url: "BL/RemoveProduct.aspx",
+                 url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
                  data: { 'Product_list_id': Product_list_id },
                  contentType: "application/json; charset=utf-8",
                  dataType: "text",
                  success: function (info) {
                      alert("success RemoveProduct.aspx");
+                     refreshPage();
+                     // Page refresh
+                     page.trigger('pagecreate');
+                     page.listview('refresh');
+
                  }, // success
                  error: function (error) {
                      alert("שגיאה בדף RemoveProduct.aspx");
                  } //error
-             });// ajax
+             }); // ajax
 
                 }
      }
+
+
+
+     function refreshPage() {
+         $.mobile.changePage(
+    window.location.href,
+    {
+        allowSamePageTransition: true,
+        transition: 'none',
+        showLoadMsg: false,
+        reloadPage: true
+    }
+  );
+     }
+
 
 
      function FinishShopping() {
