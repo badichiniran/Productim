@@ -204,6 +204,25 @@ namespace Productim.DAL
         }
 
 
+        public void DeleteProduct(string Product_list_id)
+        {
+
+            SqlConnection con;
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.DeleteProduct(Product_list_id), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+            }
+            catch (Exception ex)
+            {
+              
+                throw ex;
+            }
+            disconnect(con);
+        }
         public void FinishShopping(string UserName)
         {
 

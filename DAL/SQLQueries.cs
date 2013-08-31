@@ -64,6 +64,12 @@ namespace Productim.DAL
             return removeProduct;
         }
 
+
+        public static String DeleteProduct(string Product_list_id)
+        {
+            string deleteProduct = "DELETE FROM Product_list WHERE Product_list_id in (" + Product_list_id + ")";
+            return deleteProduct;
+        }
         public static String FinishShopping(string UserName)
         {
             String command;

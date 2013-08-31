@@ -26,9 +26,14 @@ namespace Productim.BL
             try
             {
                 string Product_list_id = requestQuery["Product_list_id"];
-               // string[] lines = Regex.Split(Product_list_id, "ID");
+                string RemoveOrDelete = requestQuery["RemoveOrDelete"];
+                // string[] lines = Regex.Split(Product_list_id, "ID");
                 Product_list_id = Product_list_id.Replace("ID", "");
-                dbs.RemoveProduct(Product_list_id);
+                if (RemoveOrDelete == "1")
+                    dbs.RemoveProduct(Product_list_id);
+                else if (RemoveOrDelete == "2")
+                    dbs.DeleteProduct(Product_list_id);
+
             }
             catch (Exception ex)
             {
