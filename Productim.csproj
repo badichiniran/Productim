@@ -58,6 +58,7 @@
     <Content Include="BL\loginPage.aspx" />
     <Content Include="BL\RemoveProduct.aspx" />
     <Content Include="BL\ShowShoppingList.aspx" />
+    <Content Include="BL\WebForm1.aspx" />
     <Content Include="HTMLPage1.htm" />
     <Content Include="SelectProducts.htm" />
     <Content Include="images\Adopt-A-Pet.png" />
@@ -155,6 +156,13 @@
     </Compile>
     <Compile Include="BL\ShowShoppingList.aspx.designer.cs">
       <DependentUpon>ShowShoppingList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BL\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\Logger.cs" />
     <Compile Include="DAL\DBServicesAPP.cs" />

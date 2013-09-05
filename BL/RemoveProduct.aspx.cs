@@ -27,11 +27,20 @@ namespace Productim.BL
             {
                 string Product_list_id = requestQuery["Product_list_id"];
                 string RemoveOrDelete = requestQuery["RemoveOrDelete"];
-                // string[] lines = Regex.Split(Product_list_id, "ID");
+
                 Product_list_id = Product_list_id.Replace("ID", "");
-                if (RemoveOrDelete == "1")
+
+                //remove the purchesd products id's
+                int index = Product_list_id.IndexOf(",P");
+                if (index > 0)
+                    Product_list_id = Product_list_id.Substring(0, index);
+
+                if (RemoveOrDelete == "1")  // remove product  from list - update IsPurchesd=true
+                {
+
                     dbs.RemoveProduct(Product_list_id);
-                else if (RemoveOrDelete == "2")
+                }
+                else if (RemoveOrDelete == "2" && Product_list_id.Contains("P")==false) // delete product from list 
                     dbs.DeleteProduct(Product_list_id);
 
             }

@@ -23,27 +23,28 @@
         }
     </style>
     <script type="text/javascript">
-
+        
         $(document).bind('pageshow', function () {
 
             jQuery.support.cors = true;
         });
          var UserName = window.localStorage.getItem("UserId")
-        $.ajax
+         $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
                  url: "BL/ShowShoppingList.aspx",
-                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
-                 data: { 'UserName': UserName},
+                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
+                 data: { 'UserName': UserName },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (info) {
-                    fillDynamicList(info);
+                     fillDynamicList(info);
                  }, // success
                  error: function (error) {
                      alert("שגיאה בדף");
+                     
                  } //error
-             });// ajax
+             }); // ajax
         
 
         //{"ShoppingList":[{"Product_list_id":"4","Product_desc":"אורז","Product_category_desc":"מזון","Unit_desc":"קילוגרם","Comment":"פרסי","Is_purchased":"False","Product_amount":"2"},{"Product_list_id":"5","Product_desc":"סתם","Product_category_desc":"בשר דגים וקפואים","Unit_desc":"יחידות","Comment":"לינגוויני","Is_purchased":"False","Product_amount":"2"}]}
@@ -53,8 +54,8 @@
 
                     for (var key in info) {
                         if (info[key].Is_purchased == "False")
-                        li += ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + '</label>';
-                      else Pli += ' <input type="checkbox" checked="checked" name="chk" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + '</label>';
+                            li += ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
+                        else Pli += ' <input type="checkbox" disabled checked="checked" name="chk" id="PID' + info[key].Product_list_id + '"> <label for="PID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
                     }
             
                                 //append list to ul
@@ -98,7 +99,7 @@
                        //refresh list to enhance its styling.
                        $("#info-page").trigger('create');
                    });
-            
+                   UnLoad1();
              }
 
 
@@ -110,26 +111,28 @@
 
 
         function RemoveProduct(RemoveOrDelete) {
-            Load1();
+          
             //if RemoveOrDelete==1 -remove, if RemoveOrDelete==2 =delete
                 var Product_list_id = $("input[type=checkbox]:checked").map(
      function () { return this.id; }).get().join(",");
-                if (Product_list_id == "") {
-                    alert("לא נבחר מוצר");
-                } else {
-                    alert(Product_list_id);
+                if (Product_list_id == "" || Product_list_id.indexOf('ID') < -1  ) {
+                    alert("לא נבחר מוצר");}
+                else {
+                    Load1("");
+                    //alert(Product_list_id);
                     $.ajax
              ({
                  type: "GET",
-                 url: "BL/RemoveProduct.aspx",
+                url: "BL/RemoveProduct.aspx",
                  //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
                  data: { 'Product_list_id': Product_list_id, 'RemoveOrDelete': RemoveOrDelete },
                  contentType: "application/json; charset=utf-8",
                  dataType: "text",
                  success: function (info) {
                      UnLoad1();
-                     alert("success RemoveProduct.aspx");
-              
+                     alert("המוצר הוסר מהרשימה");
+                     window.location.reload('#info-page', 'pop', true, true);
+
 
 
                  }, // success
@@ -137,40 +140,41 @@
                      UnLoad1();
                      alert("שגיאה בדף RemoveProduct.aspx");
                  } //error
-             });  // ajax
+             });   // ajax
 
-                }
-     }
-
-
-
-
+                }//else
+     }//RemoveProduct
 
 
 
      function FinishShopping() {
+         Load1("המתן...")
          $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                 //url: "BL/FinishShopping.aspx",
-                 url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
+                url: "BL/FinishShopping.aspx",
+                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
                  data: { 'UserName': UserName },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (info) {
-                     alert("success FinishShopping");
+                     alert("הקנייה הסתיימה בהצלחה");
+                     UnLoad1();
+                     window.location.replace('mainPage.htm', 'pop', true, true);
                  }, // success
                  error: function (error) {
+                     UnLoad1();
                      alert("error FinishShopping");
                  } //error
-             }); // ajax
+             });  // ajax
      }
 
 
 
-     function Load1() {
+     function Load1(message) {
+         var m = message
          $.mobile.loading('show', {
-             text: "מוסיף מוצר לרשימה...",
+             text: m,
              theme: 'b',
              textVisible: true
          });
@@ -186,7 +190,6 @@
     <div data-role="header" data-theme="e">
            <a href="#" data-role="button" data-icon="check" onclick="RemoveProduct(1)">קניתי</a>
          <h1> הרשימה שלי</h1> 
-<!--          <a href="#" data-role="button" onclick="FinishShopping()" data-icon="star">סיים</a>-->
         <a href="#FinishShoppingPage" data-role="button" data-icon="star" data-rel="dialog"
             data-transition="flip">סיים</a>
 
@@ -213,7 +216,7 @@
         <!-- /footer -->
 </div>
 
-    <!--------------------------------------------------- LogOut page --------------------------------------------------->
+    <!--------------------------------------------------- FinishShoppingPage --------------------------------------------------->
     <div data-role="page" data-theme="e" id="FinishShoppingPage" style="height: 100%;">
         <div data-role="header" dir="rtl" style="height: 50%; text-align: center;">
             <p>
