@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Productim.Classes;
-using System.Collections.Specialized;
 using Productim.DAL;
+using System.Collections.Specialized;
+using Productim.Classes;
 
 namespace Productim.BL
 {
-    public partial class InsertProduct : System.Web.UI.Page
+    public partial class InsertNewProduct : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,14 +27,14 @@ namespace Productim.BL
                 Product product = new Product()
                 {
 
-                    Product_amount = requestQuery["Prodect_amount"],
-                    Product_id = requestQuery["Product_id"],
+                    Product_amount = requestQuery["Product_amount"],
+                    Product_desc = requestQuery["product_desc"],
                     Units = requestQuery["Units"],
                     Comment = requestQuery["Comment"],
                     UserId = requestQuery["UserId"],
-                  
+
                 };
-                dbs.insertProductToList(product);
+                dbs.insertNewProductToList(product);
 
 
             }

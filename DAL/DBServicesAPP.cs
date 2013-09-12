@@ -71,14 +71,14 @@ namespace Productim.DAL
             return dt;
         }
 
-        public DataTable getProductTypes()
+        public DataTable GetProductCategories()
         {
             SqlConnection con;
 
             try
             {
                 con = connect();
-                da = new SqlDataAdapter(SQLQueries.ProductTypes(), con);
+                da = new SqlDataAdapter(SQLQueries.ProductCategories(), con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 dt = ds.Tables[0];
@@ -117,6 +117,29 @@ namespace Productim.DAL
 
         }
 
+        public void insertNewProductToList(Product p)
+        {
+            SqlConnection con;
+
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.insertNewProductToList(p), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dt = ds.Tables["Products"];
+
+            }
+            catch (Exception ex)
+            {
+               
+                throw ex;
+            }
+            disconnect(con);
+            
+
+        }
+
         public void insertProductToList(Product p)
         {
             SqlConnection con;
@@ -132,11 +155,11 @@ namespace Productim.DAL
             }
             catch (Exception ex)
             {
-               
+
                 throw ex;
             }
             disconnect(con);
-            
+
 
         }
 
@@ -162,14 +185,14 @@ namespace Productim.DAL
             return dt;
         }
 
-        public DataTable ShowShoppingList_byUserName(string UserName)
+        public DataTable ShowShoppingList_byUserName(string UserId)
         {
 
             SqlConnection con;
             try
             {
                 con = connect();
-                da = new SqlDataAdapter(SQLQueries.ShowShoppingList_byUserName(UserName), con);
+                da = new SqlDataAdapter(SQLQueries.ShowShoppingList_byUserName(UserId), con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 dt = ds.Tables[0];

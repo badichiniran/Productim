@@ -52,8 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BL\FinishShopping.aspx" />
+    <Content Include="BL\GetProductCategories.aspx" />
     <Content Include="BL\GetProducts.aspx" />
-    <Content Include="BL\GetProductTypes.aspx" />
+    <Content Include="BL\InsertNewProduct.aspx" />
     <Content Include="BL\InsertProduct.aspx" />
     <Content Include="BL\loginPage.aspx" />
     <Content Include="BL\RemoveProduct.aspx" />
@@ -115,6 +116,13 @@
     <Compile Include="BL\FinishShopping.aspx.designer.cs">
       <DependentUpon>FinishShopping.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BL\GetProductCategories.aspx.cs">
+      <DependentUpon>GetProductCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\GetProductCategories.aspx.designer.cs">
+      <DependentUpon>GetProductCategories.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BL\GetProducts.aspx.cs">
       <DependentUpon>GetProducts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -122,12 +130,12 @@
     <Compile Include="BL\GetProducts.aspx.designer.cs">
       <DependentUpon>GetProducts.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BL\GetProductTypes.aspx.cs">
-      <DependentUpon>GetProductTypes.aspx</DependentUpon>
+    <Compile Include="BL\InsertNewProduct.aspx.cs">
+      <DependentUpon>InsertNewProduct.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BL\GetProductTypes.aspx.designer.cs">
-      <DependentUpon>GetProductTypes.aspx</DependentUpon>
+    <Compile Include="BL\InsertNewProduct.aspx.designer.cs">
+      <DependentUpon>InsertNewProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="BL\InsertProduct.aspx.cs">
       <DependentUpon>InsertProduct.aspx</DependentUpon>

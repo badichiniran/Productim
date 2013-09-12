@@ -6,44 +6,42 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using Productim.Classes;
-using System.Web.Script.Serialization;
-using System.Collections.Specialized;
 using Productim.DAL;
+using System.Web.Script.Serialization;
 
 namespace Productim.BL
 {
-    public partial class ShowShoppingList : System.Web.UI.Page
+    public partial class GetProductCategories : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             DBServicesAPP dbs = new DBServicesAPP();
-            if (Request.QueryString == null)
-            {
-                Response.End();
-                return;
-            }
-            NameValueCollection requestQuery = Request.QueryString;
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
-            DataTable ShoppingList;
+            DataTable ProductCategories;
 
 
             try
             {
-                string UserId = requestQuery["UserId"];
-                ShoppingList = dbs.ShowShoppingList_byUserName(UserId);
-
+                ProductCategories = dbs.GetProductCategories();   // 1 is shabat imutz
+              
             }
 
             catch (Exception ex)
             {
-                Logger.writeToLog(LoggerLevel.ERROR, "page :ActivityShow.aspx.cs, the exeption message is : " + ex.Message);
+                Logger.writeToLog(LoggerLevel.ERROR, "page :ActivityShabatDog.aspx.cs, the exeption message is : " + ex.Message);
                 throw;
             }
-            string jsonStringShoppingList = serializer.Serialize(SerializeTable(ShoppingList));
-           
-            Response.Write(jsonStringShoppingList);
+
+            ProductCategories.Columns[0].ColumnName = "Code";   
+            ProductCategories.Columns[1].ColumnName = "Name";  
+
+            string jsonStringCategories = serializer.Serialize(SerializeTable(ProductCategories));
+
+
+            string jsonString = "{\"Categories\":" + jsonStringCategories + "}";
+            Response.Write(jsonString);
             Response.End();
 
         }

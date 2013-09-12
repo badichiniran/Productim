@@ -30,8 +30,8 @@ namespace Productim.BL
 
             try
             {
-                string UserName = requestQuery["UserName"];
-                dbs.FinishShopping(UserName);
+                string UserId = requestQuery["UserId"];
+                dbs.FinishShopping(UserId);
 
             }
 

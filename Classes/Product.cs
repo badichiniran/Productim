@@ -24,6 +24,15 @@ namespace Productim
             get { return product_id; }
             set { product_id = value; }
         }
+
+
+        string product_desc;
+        public string Product_desc
+        {
+            get { return product_desc; }
+            set { product_desc = value; }
+        }
+
         string units;
         public string Units
         {
@@ -45,11 +54,11 @@ namespace Productim
             set { comment = value; }
         }
 
-        string userName;
-        public string UserName
+        string userId;
+        public string UserId
         {
-            get { return userName; }
-            set { userName = value; }
+            get { return userId; }
+            set { userId = value; }
         }
 
      

@@ -1,5 +1,6 @@
 Create table Users (  
-UserName nvarchar (15) primary key,
+UserId int identity (1,1) primary key,
+UserName nvarchar (15),
 UserPassword nvarchar (15),
 )
 --drop table ProductTypes 
@@ -18,16 +19,20 @@ Create table Products (
 Product_id int identity (1,1) primary key,
 Product_desc nvarchar (20),
 Product_category_id int,
-constraint Product_category_FK foreign key (Product_category_id) references Product_categories  
+IsApproved bit NOT NULL DEFAULT ((1)) ,
+UserId int ,
+time_stmp datetime DEFAULT (GETDATE()),
+constraint Product_category_FK foreign key (Product_category_id) references Product_categories ,
+constraint UserId_FK1 foreign key (UserId) references Users   
 )
 
 Create table List(
 List_id int identity (1,1) primary key,
 List_name nvarchar (20),
-UserName nvarchar (15),
+UserId int,
 Creation_date datetime DEFAULT (GETDATE()),
 Is_Active bit NOT NULL DEFAULT ((1)) ,
-constraint UserName_FK foreign key (UserName) references Users  
+constraint UserId_FK foreign key (UserId) references Users  
 ) 
 
 Create table Units ( 

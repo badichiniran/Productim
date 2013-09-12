@@ -28,13 +28,13 @@
 
             jQuery.support.cors = true;
         });
-         var UserName = window.localStorage.getItem("UserId")
+         var UserId = window.localStorage.getItem("UserId")
          $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                 url: "BL/ShowShoppingList.aspx",
-                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
-                 data: { 'UserName': UserName },
+                 //url: "BL/ShowShoppingList.aspx",
+                 url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
+                 data: { 'UserId': UserId },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (info) {
@@ -123,8 +123,8 @@
                     $.ajax
              ({
                  type: "GET",
-                url: "BL/RemoveProduct.aspx",
-                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
+                 //url: "BL/RemoveProduct.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
                  data: { 'Product_list_id': Product_list_id, 'RemoveOrDelete': RemoveOrDelete },
                  contentType: "application/json; charset=utf-8",
                  dataType: "text",
@@ -152,9 +152,9 @@
          $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                url: "BL/FinishShopping.aspx",
-                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
-                 data: { 'UserName': UserName },
+                 //url: "BL/FinishShopping.aspx",
+               url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
+                data: { 'UserId': UserId },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (info) {

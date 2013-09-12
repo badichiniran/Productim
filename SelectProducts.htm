@@ -27,8 +27,8 @@
             
                 $.ajax({
                     type: "GET",
-                  url: "BL/GetProducts.aspx",
-                   // url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
+                  //url: "BL/GetProducts.aspx",
+                  url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
                     data: {},
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -40,9 +40,28 @@
 
                     } //error
                 });  // ajax
-               
-           
 
+//                $.ajax({
+//                    type: "GET",
+//                    url: "BL/GetProductCategories.aspx",
+//                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProductCategories.aspx",
+//                    data: {},
+//                    contentType: "application/json; charset=utf-8",
+//                    dataType: "json",
+//                    success: function (res) {
+//                        populateDDL("Categories", res["ProductCategories"]);
+//                    }, // success
+//                    error: function (error) {
+//                        alert("Error-GetProductTypes.aspx");
+
+//                    } //error
+//                });  // ajax
+//                function populateDDL(Name, data) {
+//                var select = document.getElementById(Name);
+//                for (var i = 0; i < data.length; i++) {
+//                    var d = data[i];
+//                    select.options.add(new Option(d.Name, d.Code));
+//                }
    
             //var info= [{ "id": 1, "name": "שתיה" }, { "id": 2, "name": "ירקות ופירות" }, { "id": 3, "name": " עוף בשר דגים" }, { "id": 4, "name": "מוצרי חלב" }, { "id": 5, "name": "מאפה" }, { "id": 6, "name": "נשנושים" }, { "id": 7, "name": "דגנים" }, { "id": 8, "name": "היגיינה" }, { "id": 9, "name": "שונות"}]
 
@@ -110,13 +129,43 @@
                  var Product_id = $('#Product_id').val();
                  var Units = $("input:radio:checked").val();
                  var Comment = $('#Comment').val();
-                 var UserName = window.localStorage.getItem("UserId")
+                 var UserId = window.localStorage.getItem("UserId")
                  $.ajax({
                      type: "GET",
-                     url: "BL/InsertProduct.aspx",
-                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+                     // url: "BL/InsertProduct.aspx",
+                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                      data:
-                     { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserName': UserName },
+                     { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "text",
+                     success: function (res) {
+                         UnLoad1();
+                         alert("מוצר הוסף בהצלחה")
+                         window.location.replace('#info-page', 'flip', true, true);
+                     }, // success
+                     error: function (error) {
+                         alert("error-InsertProduct.aspx");
+                         UnLoad1();
+                         alert("שגיאה. אנא נסה שוב")
+                     } //error
+                 });   // ajax
+             } //AddProduct()
+
+
+             function AddNewProduct() {
+
+                 Load1();
+                 var Product_amount = $('#Product_amount1').val();
+                 var product_desc = $('#product_desc1').val();
+                 var Units = $("input:radio:checked").val();
+                 var Comment = $('#Comment1').val();
+                 var UserId = window.localStorage.getItem("UserId")
+                 $.ajax({
+                     type: "GET",
+                     // url: "BL/InsertNewProduct.aspx",
+                     url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
+                     data:
+                     { 'product_desc': product_desc, 'Product_amount': Product_amount, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                      contentType: "application/json; charset=utf-8",
                      dataType: "text",
                      success: function (res) {
@@ -152,11 +201,13 @@
 
 </head>
 <body>
-    <!--first page -->
-    <div data-role="page" id="info-page" data-theme="e">
+    <!--רשימת מוצרים -->
+    <div data-role="page" id="info-page" data-theme="e" data-position="fixed">
         <div data-role="header">
             <h1>
                 רשימת מוצרים</h1>
+                        <a href="#InsertNewProduct" data-role="button" data-icon="plus">מוצר חדש</a>
+
         </div>
         <div data-role="content">
             <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true"
@@ -169,7 +220,7 @@
         </div>
         <!-- /footer -->
     </div>
-    <!--second page -->
+    <!--פרטי מוצר -->
     <div data-role="page" id="details-page" data-theme="e" style="text-align: right">
         <div data-role="header" data-position="fixed">
             <a href="#" data-role="button" data-mini="true" data-icon="plus" onclick="AddProduct()">
@@ -189,22 +240,27 @@
                     בחר כמות:
                 </td>
             </tr>
-            </table>
-<div data-role="fieldcontain" align="center" style="border-bottom-style:none">
-<br /><br />
-	    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-	         	<input type="radio" name="radio-view" id="radio-view-a" value="1" checked="checked" />
-	         	<label for="radio-view-a">יחידות</label>
-	         	<input type="radio" name="radio-view" id="radio-view-b" value="2"  />
-	         	<label for="radio-view-b">קילוגרם</label>
-	         	<input type="radio" name="radio-view" id="radio-view-c" value="3"  />
-	         	<label for="radio-view-c">גרם</label>
-	         	<input type="radio" name="radio-view" id="radio-view-d" value="4"  />
-	         	<label for="radio-view-d">חבילות</label>
-	    </fieldset>
-	</div>
-    <br />
-    <table style="width: 100%;">
+        </table>
+        <div data-role="fieldcontain" align="center" style="border-bottom-style: none">
+            <br />
+            <br />
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <input type="radio" name="radio-view" id="radio-view-a" value="1" checked="checked" />
+                <label for="radio-view-a">
+                    יחידות</label>
+                <input type="radio" name="radio-view" id="radio-view-b" value="2" />
+                <label for="radio-view-b">
+                    קילוגרם</label>
+                <input type="radio" name="radio-view" id="radio-view-c" value="3" />
+                <label for="radio-view-c">
+                    גרם</label>
+                <input type="radio" name="radio-view" id="radio-view-d" value="4" />
+                <label for="radio-view-d">
+                    חבילות</label>
+            </fieldset>
+        </div>
+        <br />
+        <table style="width: 100%;">
             <tr>
                 <td class="style2">
                     <input id="Comment" type="text" />
@@ -218,5 +274,68 @@
             <a href="#" data-rel="back" data-role="button" data-icon="back">חזרה</a>
         </div>
     </div>
+    <!--מוצר חדש לרשימה -->
+    <div data-role="page" id="InsertNewProduct" data-theme="e" style="text-align: right">
+        <div data-role="header" data-position="fixed">
+            <a href="#" data-role="button" data-mini="true" data-icon="plus" onclick="AddNewProduct()">
+                הוסף</a>
+            <h1>
+                מוצר חדש</h1>
+        </div>
+        <div data-role="content" style="text-decoration: underline; text-align: center;">
+        </div>
+        <table style="width: 100%;">
+                    <tr>
+                <td class="style2">
+                    <input id="product_desc1" type="text" />
+                </td>
+                <td class="style2">
+                    תיאור:
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="range" name="slider-fill" id="Product_amount1" value="1" min="1" max="20"
+                        data-highlight="true" />
+                </td>
+                <td class="style2">
+                    בחר כמות:
+                </td>
+            </tr>
+        </table>
+        <div data-role="fieldcontain" align="center" style="border-bottom-style: none">
+            <br />
+            <br />
+            <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <input type="radio" name="radio-view" id="radio1" value="1" checked="checked" />
+                <label for="radio1">
+                    יחידות</label>
+                <input type="radio" name="radio-view" id="radio2" value="2" />
+                <label for="radio2">
+                    קילוגרם</label>
+                <input type="radio" name="radio-view" id="radio3" value="3" />
+                <label for="radio3">
+                    גרם</label>
+                <input type="radio" name="radio-view" id="radio4" value="4" />
+                <label for="radio4">
+                    חבילות</label>
+            </fieldset>
+        </div>
+        <br />
+        <table style="width: 100%;">
+            <tr>
+                <td class="style2">
+                    <input id="Comment1" type="text" />
+                </td>
+                <td class="style2">
+                    הערה:
+                </td>
+            </tr>
+        </table>
+        <div data-role="footer" style="text-align: left" data-position="fixed">
+            <a href="#" data-rel="back" data-role="button" data-icon="back">חזרה</a>
+        </div>
+    </div>
+    <!-- /page -->
 </body>
 </html>
