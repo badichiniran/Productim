@@ -67,10 +67,10 @@ namespace Productim.DAL
             return showProducts;
         }
 
-        public static String ShowShoppingList_byUserName(string UserId)
+        public static String ShowShoppingList_byUserId(string UserId)
         {
 
-            return "SELECT Product_list_id,Product_desc,Product_category_desc,Unit_desc,Comment,Is_purchased,Product_amount FROM View_ShowProductList  where UserId='" + UserId + "'";
+            return "SELECT Product_list_id,Product_desc,Product_category_desc,Unit_desc,Comment,Is_purchased,Product_amount FROM View_ShowProductList  where UserId='" + UserId + "' order by Product_category_desc ";
         }
 
         public static String RemoveProduct(string Product_list_id)
@@ -89,9 +89,9 @@ namespace Productim.DAL
         {
             String command;
             string getOldList = " DECLARE @OldList_id int SET @OldList_id = (select List_id from List where UserId='" + UserId + "' and  Is_Active=1 )";
-            string updateList = " UPDATE [List] SET [Is_Active] = 0 WHERE UserName='" + UserId + "' and Is_Active=1 ";
-            string insertNewList = " INSERT INTO [List] (UserName) VALUES('" + UserId + "') ";
-            string getNewListId = " DECLARE @NewList_id int SET @NewList_id = (select List_id from List where UserName='" + UserId + "' and  Is_Active=1 )";
+            string updateList = " UPDATE [List] SET [Is_Active] = 0 WHERE UserId='" + UserId + "' and Is_Active=1 ";
+            string insertNewList = " INSERT INTO [List] (UserId) VALUES(" + UserId + ") ";
+            string getNewListId = " DECLARE @NewList_id int SET @NewList_id = (select List_id from List where UserId='" + UserId + "' and  Is_Active=1 )";
             string updateProductListId = " UPDATE [Product_list] SET [List_id] = @NewList_id WHERE List_id=@OldList_id  and Is_purchased=0 ";
             command = getOldList + updateList + insertNewList + getNewListId + updateProductListId;
 

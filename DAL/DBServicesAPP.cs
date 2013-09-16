@@ -185,14 +185,14 @@ namespace Productim.DAL
             return dt;
         }
 
-        public DataTable ShowShoppingList_byUserName(string UserId)
+        public DataTable ShowShoppingList_byUserId(string UserId)
         {
 
             SqlConnection con;
             try
             {
                 con = connect();
-                da = new SqlDataAdapter(SQLQueries.ShowShoppingList_byUserName(UserId), con);
+                da = new SqlDataAdapter(SQLQueries.ShowShoppingList_byUserId(UserId), con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 dt = ds.Tables[0];

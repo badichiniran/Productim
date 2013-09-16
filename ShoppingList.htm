@@ -33,7 +33,7 @@
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
                  //url: "BL/ShowShoppingList.aspx",
-                 url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
                  data: { 'UserId': UserId },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
@@ -49,13 +49,20 @@
 
         //{"ShoppingList":[{"Product_list_id":"4","Product_desc":"אורז","Product_category_desc":"מזון","Unit_desc":"קילוגרם","Comment":"פרסי","Is_purchased":"False","Product_amount":"2"},{"Product_list_id":"5","Product_desc":"סתם","Product_category_desc":"בשר דגים וקפואים","Unit_desc":"יחידות","Comment":"לינגוויני","Is_purchased":"False","Product_amount":"2"}]}
                 function fillDynamicList(info) {
-                    var li ="";
-                    var Pli = "";
-
+                   var li = "";
+                    var Pli = "";                    
                     for (var key in info) {
-                        if (info[key].Is_purchased == "False")
-                            li += ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
-                        else Pli += ' <input type="checkbox" disabled checked="checked" name="chk" id="PID' + info[key].Product_list_id + '"> <label for="PID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
+                        if (info[key].Is_purchased == "False") {
+                            if (key == 0)
+                                li += info[0].Product_category_desc+ ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label style="text-align: right" for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
+                            else {
+                                if (info[key].Product_category_desc != info[key - 1].Product_category_desc)
+                                    li += info[key].Product_category_desc + ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label style="text-align: right" for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
+                                else
+                                    li += ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label style="text-align: right" for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
+                            }
+                        }
+                        else Pli += ' <input type="checkbox" disabled checked="checked" name="chk" id="PID' + info[key].Product_list_id + '"> <label style="text-align: right" for="PID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
                     }
             
                                 //append list to ul
@@ -194,11 +201,11 @@
             data-transition="flip">סיים</a>
 
     </div>
-    <div data-role="content">
+    <div data-role="content" >
 
      <div data-role="header" data-theme="a">   <h1> רשימה</h1></div>
-        <fieldset data-role="controlgroup" data-iconpos="right" id="prof-list">
-
+        <fieldset data-role="controlgroup" data-iconpos="right" id="prof-list" style="text-align: right">
+        
           </fieldset>
           <div data-role="header" data-theme="a">   <h1> קניתי</h1></div>
                   <fieldset data-role="controlgroup" data-iconpos="right" id="prof-list1">

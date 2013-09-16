@@ -32,13 +32,13 @@ namespace Productim.BL
             try
             {
                 string UserId = requestQuery["UserId"];
-                ShoppingList = dbs.ShowShoppingList_byUserName(UserId);
+                ShoppingList = dbs.ShowShoppingList_byUserId(UserId);
 
             }
 
             catch (Exception ex)
             {
-                Logger.writeToLog(LoggerLevel.ERROR, "page :ActivityShow.aspx.cs, the exeption message is : " + ex.Message);
+                Logger.writeToLog(LoggerLevel.ERROR, "page :ShowShoppingList.aspx.cs, the exeption message is : " + ex.Message);
                 throw;
             }
             string jsonStringShoppingList = serializer.Serialize(SerializeTable(ShoppingList));
