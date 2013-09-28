@@ -27,8 +27,8 @@
             
                 $.ajax({
                     type: "GET",
-                  //url: "BL/GetProducts.aspx",
-                  url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
+                  url: "BL/GetProducts.aspx",
+                  //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
                     data: {},
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -132,8 +132,8 @@
                  var UserId = window.localStorage.getItem("UserId")
                  $.ajax({
                      type: "GET",
-                     // url: "BL/InsertProduct.aspx",
-                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+                   url: "BL/InsertProduct.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                      data:
                      { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                      contentType: "application/json; charset=utf-8",
@@ -153,7 +153,7 @@
 
 
              function AddNewProduct() {
-
+                 alert(aa);
                  Load1();
                  var Product_amount = $('#Product_amount1').val();
                  var product_desc = $('#product_desc1').val();
@@ -162,8 +162,8 @@
                  var UserId = window.localStorage.getItem("UserId")
                  $.ajax({
                      type: "GET",
-                     // url: "BL/InsertNewProduct.aspx",
-                     url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
+                    url: "BL/InsertNewProduct.aspx",
+                     //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
                      data:
                      { 'product_desc': product_desc, 'Product_amount': Product_amount, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                      contentType: "application/json; charset=utf-8",
@@ -196,6 +196,15 @@
                  window.location.replace('mainPage.htm', 'pop', true, true);
              }
 
+
+        function RediirectToPage() {
+            var a = $("ul.emp_listview").prev().find('input.ui-input-text');
+            var a1 = $('#prof-list').prev().find(".ui-input-search .ui-input-text").val();
+            aa = $('#prof-list').val();
+
+            alert(aa);
+            window.location.replace('#InsertNewProduct', 'flip', true, true);
+            }
 </script>
    
 
@@ -206,11 +215,12 @@
         <div data-role="header">
             <h1>
                 רשימת מוצרים</h1>
-                        <a href="#InsertNewProduct" data-role="button" data-icon="plus">מוצר חדש</a>
-
+                       <!-- <a href="#InsertNewProduct" data-role="button" data-icon="plus">מוצר חדש</a>-->
+                                                <a href="" data-rel="popup" data-position-to="window" data-transition="flip" rel="external"
+                            onclick="RediirectToPage()">מוצר חדש</a>
         </div>
         <div data-role="content">
-            <ul data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true"
+            <ul class="emp_listview" data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true" data-name="niran"
                 data-filter-placeholder="חפש מוצר" data-filter="true" data>
                 <!--                <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>-->
             </ul>
