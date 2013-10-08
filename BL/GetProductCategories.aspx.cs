@@ -25,7 +25,7 @@ namespace Productim.BL
             try
             {
                 ProductCategories = dbs.GetProductCategories();   // 1 is shabat imutz
-              
+
             }
 
             catch (Exception ex)
@@ -34,8 +34,8 @@ namespace Productim.BL
                 throw;
             }
 
-            ProductCategories.Columns[0].ColumnName = "Code";   
-            ProductCategories.Columns[1].ColumnName = "Name";  
+            ProductCategories.Columns[0].ColumnName = "Code";
+            ProductCategories.Columns[1].ColumnName = "Name";
 
             string jsonStringCategories = serializer.Serialize(SerializeTable(ProductCategories));
 

@@ -32,7 +32,7 @@ namespace Productim.BL
                     Units = requestQuery["Units"],
                     Comment = requestQuery["Comment"],
                     UserId = requestQuery["UserId"],
-                  
+
                 };
                 dbs.insertProductToList(product);
 

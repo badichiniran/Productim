@@ -40,7 +40,7 @@ namespace Productim.BL
 
                     dbs.RemoveProduct(Product_list_id);
                 }
-                else if (RemoveOrDelete == "2" && Product_list_id.Contains("P")==false) // delete product from list 
+                else if (RemoveOrDelete == "2" && Product_list_id.Contains("P") == false) // delete product from list 
                     dbs.DeleteProduct(Product_list_id);
 
             }

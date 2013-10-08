@@ -23,9 +23,9 @@ namespace Productim.BL
             }
             NameValueCollection requestQuery = Request.QueryString;
 
-           
 
-           
+
+
 
 
             try
@@ -38,16 +38,16 @@ namespace Productim.BL
             catch (Exception ex)
             {
                 Logger.writeToLog(LoggerLevel.ERROR, "page :ActivityShow.aspx.cs, the exeption message is : " + ex.Message);
-                
-            }
-           
 
-          
+            }
+
+
+
             Response.End();
 
         }
 
 
-   
+
     }
 }

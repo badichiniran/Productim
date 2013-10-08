@@ -16,11 +16,11 @@ namespace Productim.BL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             DBServicesAPP dbs = new DBServicesAPP();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             DataTable UserDetails = new DataTable();
-            
+
 
             if (Request.QueryString == null)
             {
@@ -34,7 +34,7 @@ namespace Productim.BL
             string UserNameString = workerDetailQS["id"];
             string passwordString = workerDetailQS["password"];
 
-          
+
             try
             {
                 UserDetails = dbs.getPass(UserNameString);
@@ -48,7 +48,7 @@ namespace Productim.BL
                 //    string a = "f";
                 //}
 
-             
+
             }
 
 

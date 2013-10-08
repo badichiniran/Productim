@@ -42,7 +42,7 @@ namespace Productim.BL
                 throw;
             }
             string jsonStringShoppingList = serializer.Serialize(SerializeTable(ShoppingList));
-           
+
             Response.Write(jsonStringShoppingList);
             Response.End();
 

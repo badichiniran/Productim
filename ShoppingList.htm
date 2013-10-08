@@ -23,17 +23,17 @@
         }
     </style>
     <script type="text/javascript">
-        
+
         $(document).bind('pageshow', function () {
 
             jQuery.support.cors = true;
         });
-         var UserId = window.localStorage.getItem("UserId")
-         $.ajax
+        var UserId = window.localStorage.getItem("UserId")
+        $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                 //url: "BL/ShowShoppingList.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
+                 url: "BL/ShowShoppingList.aspx",
+                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
                  data: { 'UserId': UserId },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
@@ -41,73 +41,73 @@
                      fillDynamicList(info);
                  }, // success
                  error: function (error) {
-                     alert("שגיאה בדף");
-                     
+                     alert("שגיאה בדף111");
+
                  } //error
              }); // ajax
-        
+
 
         //{"ShoppingList":[{"Product_list_id":"4","Product_desc":"אורז","Product_category_desc":"מזון","Unit_desc":"קילוגרם","Comment":"פרסי","Is_purchased":"False","Product_amount":"2"},{"Product_list_id":"5","Product_desc":"סתם","Product_category_desc":"בשר דגים וקפואים","Unit_desc":"יחידות","Comment":"לינגוויני","Is_purchased":"False","Product_amount":"2"}]}
-                function fillDynamicList(info) {
-                   var li = "";
-                    var Pli = "";                    
-                    for (var key in info) {
-                        if (info[key].Is_purchased == "False") {
-                            if (key == 0)
-                                li += info[0].Product_category_desc+ ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label style="text-align: right" for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
-                            else {
-                                if (info[key].Product_category_desc != info[key - 1].Product_category_desc)
-                                    li += info[key].Product_category_desc + ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label style="text-align: right" for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
-                                else
-                                    li += ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label style="text-align: right" for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
-                            }
-                        }
-                        else Pli += ' <input type="checkbox" disabled checked="checked" name="chk" id="PID' + info[key].Product_list_id + '"> <label style="text-align: right" for="PID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
+        function fillDynamicList(info) {
+            var li = "";
+            var Pli = "";
+            for (var key in info) {
+                if (info[key].Is_purchased == "False") {
+                    if (key == 0)
+                        li += info[0].Product_category_desc + ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label style="text-align: right" for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
+                    else {
+                        if (info[key].Product_category_desc != info[key - 1].Product_category_desc)
+                            li += info[key].Product_category_desc + ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label style="text-align: right" for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
+                        else
+                            li += ' <input type="checkbox" name="chk" id="ID' + info[key].Product_list_id + '"> <label style="text-align: right" for="ID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
                     }
-            
-                                //append list to ul
-                    $("#prof-list").append(li).promise().done(function () {
-                        //wait for append to finish - thats why you use a promise()
-                        //done() will run after append is done
-                        //add the click event for the redirection to happen to #details-page
-                        $(this).on("click", ".info-go", function (e) {
-                            e.preventDefault();
-                            //store the information in the next page's data
-                          //  $("#details-page").data("info", info[this.id]);
-                            //change the page # to second page. 
-                            //Now the URL in the address bar will read index.html#details-page
-                            //where #details-page is the "id" of the second page
-                            //we're gonna redirect to that now using changePage() method
-                           // $.mobile.changePage("#details-page");
-                        });
+                }
+                else Pli += ' <input type="checkbox" disabled checked="checked" name="chk" id="PID' + info[key].Product_list_id + '"> <label style="text-align: right" for="PID' + info[key].Product_list_id + '">' + info[key].Product_desc + ',' + info[key].Product_amount + ' ' + info[key].Unit_desc + ' ' + info[key].Comment + ' </label>';
+            }
 
-                        //refresh list to enhance its styling.
-                       $("#info-page").trigger('create');
-                   });
+            //append list to ul
+            $("#prof-list").append(li).promise().done(function () {
+                //wait for append to finish - thats why you use a promise()
+                //done() will run after append is done
+                //add the click event for the redirection to happen to #details-page
+                $(this).on("click", ".info-go", function (e) {
+                    e.preventDefault();
+                    //store the information in the next page's data
+                    //  $("#details-page").data("info", info[this.id]);
+                    //change the page # to second page. 
+                    //Now the URL in the address bar will read index.html#details-page
+                    //where #details-page is the "id" of the second page
+                    //we're gonna redirect to that now using changePage() method
+                    // $.mobile.changePage("#details-page");
+                });
+
+                //refresh list to enhance its styling.
+                $("#info-page").trigger('create');
+            });
 
 
 
-                   //append list to ul
-                   $("#prof-list1").append(Pli).promise().done(function () {
-                       //wait for append to finish - thats why you use a promise()
-                       //done() will run after append is done
-                       //add the click event for the redirection to happen to #details-page
-                       $(this).on("click", ".info-go", function (e) {
-                           e.preventDefault();
-                           //store the information in the next page's data
-                           //  $("#details-page").data("info", info[this.id]);
-                           //change the page # to second page. 
-                           //Now the URL in the address bar will read index.html#details-page
-                           //where #details-page is the "id" of the second page
-                           //we're gonna redirect to that now using changePage() method
-                           // $.mobile.changePage("#details-page");
-                       });
+            //append list to ul
+            $("#prof-list1").append(Pli).promise().done(function () {
+                //wait for append to finish - thats why you use a promise()
+                //done() will run after append is done
+                //add the click event for the redirection to happen to #details-page
+                $(this).on("click", ".info-go", function (e) {
+                    e.preventDefault();
+                    //store the information in the next page's data
+                    //  $("#details-page").data("info", info[this.id]);
+                    //change the page # to second page. 
+                    //Now the URL in the address bar will read index.html#details-page
+                    //where #details-page is the "id" of the second page
+                    //we're gonna redirect to that now using changePage() method
+                    // $.mobile.changePage("#details-page");
+                });
 
-                       //refresh list to enhance its styling.
-                       $("#info-page").trigger('create');
-                   });
-                   UnLoad1();
-             }
+                //refresh list to enhance its styling.
+                $("#info-page").trigger('create');
+            });
+            UnLoad1();
+        }
 
 
 
@@ -118,20 +118,21 @@
 
 
         function RemoveProduct(RemoveOrDelete) {
-          
+
             //if RemoveOrDelete==1 -remove, if RemoveOrDelete==2 =delete
-                var Product_list_id = $("input[type=checkbox]:checked").map(
+            var Product_list_id = $("input[type=checkbox]:checked").map(
      function () { return this.id; }).get().join(",");
-                if (Product_list_id == "" || Product_list_id.indexOf('ID') < -1  ) {
-                    alert("לא נבחר מוצר");}
-                else {
-                    Load1("");
-                    //alert(Product_list_id);
-                    $.ajax
+            if (Product_list_id == "" || Product_list_id.indexOf('ID') < -1) {
+                alert("לא נבחר מוצר");
+            }
+            else {
+                Load1("");
+                //alert(Product_list_id);
+                $.ajax
              ({
                  type: "GET",
-                 //url: "BL/RemoveProduct.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
+                 url: "BL/RemoveProduct.aspx",
+                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
                  data: { 'Product_list_id': Product_list_id, 'RemoveOrDelete': RemoveOrDelete },
                  contentType: "application/json; charset=utf-8",
                  dataType: "text",
@@ -149,19 +150,19 @@
                  } //error
              });   // ajax
 
-                }//else
-     }//RemoveProduct
+            } //else
+        } //RemoveProduct
 
 
 
-     function FinishShopping() {
-         Load1("המתן...")
-         $.ajax
+        function FinishShopping() {
+            Load1("המתן...")
+            $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                 //url: "BL/FinishShopping.aspx",
-               url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
-                data: { 'UserId': UserId },
+                 url: "BL/FinishShopping.aspx",
+                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
+                 data: { 'UserId': UserId },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
                  success: function (info) {
@@ -174,22 +175,22 @@
                      alert("error FinishShopping");
                  } //error
              });  // ajax
-     }
+        }
 
 
 
-     function Load1(message) {
-         var m = message
-         $.mobile.loading('show', {
-             text: m,
-             theme: 'b',
-             textVisible: true
-         });
-     }
+        function Load1(message) {
+            var m = message
+            $.mobile.loading('show', {
+                text: m,
+                theme: 'b',
+                textVisible: true
+            });
+        }
 
-     function UnLoad1() {
-         $.mobile.loading('hide');
-     } // Unload
+        function UnLoad1() {
+            $.mobile.loading('hide');
+        } // Unload
     </script>
 </head>
 <body>

@@ -24,186 +24,184 @@
     </style>
 
         <script type="text/javascript">
-            
-                $.ajax({
-                    type: "GET",
-                  url: "BL/GetProducts.aspx",
-                  //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
-                    data: {},
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (info) {
-                        fillDynamicList(info);
-                    }, // success
-                    error: function (error) {
-                        alert("Error-GetProductTypes.aspx");
 
-                    } //error
-                });  // ajax
+            $.ajax({
+                type: "GET",
+                url: "BL/GetProducts.aspx",
+                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
+                data: {},
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (info) {
+                    fillDynamicList(info);
+                }, // success
+                error: function (error) {
+                    alert("Error-GetProductTypes.aspx");
 
-//                $.ajax({
-//                    type: "GET",
-//                    url: "BL/GetProductCategories.aspx",
-//                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProductCategories.aspx",
-//                    data: {},
-//                    contentType: "application/json; charset=utf-8",
-//                    dataType: "json",
-//                    success: function (res) {
-//                        populateDDL("Categories", res["ProductCategories"]);
-//                    }, // success
-//                    error: function (error) {
-//                        alert("Error-GetProductTypes.aspx");
+                } //error
+            });  // ajax
 
-//                    } //error
-//                });  // ajax
-//                function populateDDL(Name, data) {
-//                var select = document.getElementById(Name);
-//                for (var i = 0; i < data.length; i++) {
-//                    var d = data[i];
-//                    select.options.add(new Option(d.Name, d.Code));
-//                }
-   
+            //                $.ajax({
+            //                    type: "GET",
+            //                    url: "BL/GetProductCategories.aspx",
+            //                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProductCategories.aspx",
+            //                    data: {},
+            //                    contentType: "application/json; charset=utf-8",
+            //                    dataType: "json",
+            //                    success: function (res) {
+            //                        populateDDL("Categories", res["ProductCategories"]);
+            //                    }, // success
+            //                    error: function (error) {
+            //                        alert("Error-GetProductTypes.aspx");
+
+            //                    } //error
+            //                });  // ajax
+            //                function populateDDL(Name, data) {
+            //                var select = document.getElementById(Name);
+            //                for (var i = 0; i < data.length; i++) {
+            //                    var d = data[i];
+            //                    select.options.add(new Option(d.Name, d.Code));
+            //                }
+
             //var info= [{ "id": 1, "name": "שתיה" }, { "id": 2, "name": "ירקות ופירות" }, { "id": 3, "name": " עוף בשר דגים" }, { "id": 4, "name": "מוצרי חלב" }, { "id": 5, "name": "מאפה" }, { "id": 6, "name": "נשנושים" }, { "id": 7, "name": "דגנים" }, { "id": 8, "name": "היגיינה" }, { "id": 9, "name": "שונות"}]
 
 
-             //pageinit event for first page
-             //triggers only <once></once>
-             //write all your on-load functions and event handlers pertaining to page1
-//            $(document).on("pageinit", "#info-page", function () {
+            //pageinit event for first page
+            //triggers only <once></once>
+            //write all your on-load functions and event handlers pertaining to page1
+            //            $(document).on("pageinit", "#info-page", function () {
 
 
-                function fillDynamicList(info) {
-                    //set up string for adding <li/>
-                    var li = "";
-                    //container for $li to be added
-                    $.each(info, function (i, name) {
-                        //add the <li> to "li" variable
-                        //note the use of += in the variable
-                        //meaning I'm adding to the existing data. not replacing it.
-                        //store index value in array as id of the <a> tag
-                        li += '<li><a href="#" id="' + i + '" class="info-go">' + name.name + '</a></li>';
+            function fillDynamicList(info) {
+                //set up string for adding <li/>
+                var li = "";
+                //container for $li to be added
+                $.each(info, function (i, name) {
+                    //add the <li> to "li" variable
+                    //note the use of += in the variable
+                    //meaning I'm adding to the existing data. not replacing it.
+                    //store index value in array as id of the <a> tag
+                    li += '<li><a href="#" id="' + i + '" class="info-go">' + name.name + '</a></li>';
+                });
+                //append list to ul
+                $("#prof-list").append(li).promise().done(function () {
+                    //wait for append to finish - thats why you use a promise()
+                    //done() will run after append is done
+                    //add the click event for the redirection to happen to #details-page
+                    $(this).on("click", ".info-go", function (e) {
+                        e.preventDefault();
+                        //store the information in the next page's data
+                        $("#details-page").data("info", info[this.id]);
+                        //change the page # to second page. 
+                        //Now the URL in the address bar will read index.html#details-page
+                        //where #details-page is the "id" of the second page
+                        //we're gonna redirect to that now using changePage() method
+                        $.mobile.changePage("#details-page");
                     });
-                    //append list to ul
-                    $("#prof-list").append(li).promise().done(function () {
-                        //wait for append to finish - thats why you use a promise()
-                        //done() will run after append is done
-                        //add the click event for the redirection to happen to #details-page
-                        $(this).on("click", ".info-go", function (e) {
-                            e.preventDefault();
-                            //store the information in the next page's data
-                            $("#details-page").data("info", info[this.id]);
-                            //change the page # to second page. 
-                            //Now the URL in the address bar will read index.html#details-page
-                            //where #details-page is the "id" of the second page
-                            //we're gonna redirect to that now using changePage() method
-                            $.mobile.changePage("#details-page");
-                        });
 
-                        //refresh list to enhance its styling.
-                        $(this).listview("refresh");
-                    });
-                    //            });
-                }
+                    //refresh list to enhance its styling.
+                    $(this).listview("refresh");
+                });
+                //            });
+            }
 
-             //use pagebeforeshow
-             //DONT USE PAGEINIT! 
-             //the reason is you want this to happen every single time
-             //pageinit will happen only once
-             $(document).on("pagebeforeshow", "#details-page", function () {
-                 //get from data - you put this here when the "a" wa clicked in the previous page
-                 var info = $(this).data("info");
-                 //string to put HTML in          
-                 var info_view = '<div class="ui-grid-a" id="Product_name">' + info["name"] + '</div><input id="Product_id" type="text"  hidden="hidden" value=' + info["id"] + ' />';
+            //use pagebeforeshow
+            //DONT USE PAGEINIT! 
+            //the reason is you want this to happen every single time
+            //pageinit will happen only once
+            $(document).on("pagebeforeshow", "#details-page", function () {
+                //get from data - you put this here when the "a" wa clicked in the previous page
+                var info = $(this).data("info");
+                //string to put HTML in          
+                var info_view = '<div class="ui-grid-a" id="Product_name">' + info["name"] + '</div><input id="Product_id" type="text"  hidden="hidden" value=' + info["id"] + ' />';
 
-                 //add this to html
-                 $(this).find("[data-role=content]").html(info_view);
-             });
+                //add this to html
+                $(this).find("[data-role=content]").html(info_view);
+            });
 
 
 
 
-             function AddProduct() {
+            function AddProduct() {
 
-                 Load1();
-                 var Prodect_amount = $('#Product_amount').val();
-                 var Product_id = $('#Product_id').val();
-                 var Units = $("input:radio:checked").val();
-                 var Comment = $('#Comment').val();
-                 var UserId = window.localStorage.getItem("UserId")
-                 $.ajax({
-                     type: "GET",
-                   url: "BL/InsertProduct.aspx",
+                Load1();
+                var Prodect_amount = $('#Product_amount').val();
+                var Product_id = $('#Product_id').val();
+                var Units = $("input:radio:checked").val();
+                var Comment = $('#Comment').val();
+                var UserId = window.localStorage.getItem("UserId")
+                $.ajax({
+                    type: "GET",
+                    url: "BL/InsertProduct.aspx",
                     //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
-                     data:
+                    data:
                      { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
-                     contentType: "application/json; charset=utf-8",
-                     dataType: "text",
-                     success: function (res) {
-                         UnLoad1();
-                         alert("מוצר הוסף בהצלחה")
-                         window.location.replace('#info-page', 'flip', true, true);
-                     }, // success
-                     error: function (error) {
-                         alert("error-InsertProduct.aspx");
-                         UnLoad1();
-                         alert("שגיאה. אנא נסה שוב")
-                     } //error
-                 });   // ajax
-             } //AddProduct()
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: function (res) {
+                        UnLoad1();
+                        alert("מוצר הוסף בהצלחה")
+                        window.location.replace('#info-page', 'flip', true, true);
+                    }, // success
+                    error: function (error) {
+                        alert("error-InsertProduct.aspx");
+                        UnLoad1();
+                        alert("שגיאה. אנא נסה שוב")
+                    } //error
+                });   // ajax
+            } //AddProduct()
 
 
-             function AddNewProduct() {
-                 alert(aa);
-                 Load1();
-                 var Product_amount = $('#Product_amount1').val();
-                 var product_desc = $('#product_desc1').val();
-                 var Units = $("input:radio:checked").val();
-                 var Comment = $('#Comment1').val();
-                 var UserId = window.localStorage.getItem("UserId")
-                 $.ajax({
-                     type: "GET",
+            function AddNewProduct() {
+                // alert(aa);
+                Load1();
+                var Product_amount = $('#Product_amount1').val();
+                var product_desc = $('#product_desc1').val();
+                var Units = $("input:radio:checked").val();
+                var Comment = $('#Comment1').val();
+                var UserId = window.localStorage.getItem("UserId")
+                $.ajax({
+                    type: "GET",
                     url: "BL/InsertNewProduct.aspx",
-                     //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
-                     data:
+                    // url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
+                    data:
                      { 'product_desc': product_desc, 'Product_amount': Product_amount, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
-                     contentType: "application/json; charset=utf-8",
-                     dataType: "text",
-                     success: function (res) {
-                         UnLoad1();
-                         alert("מוצר הוסף בהצלחה")
-                         window.location.replace('#info-page', 'flip', true, true);
-                     }, // success
-                     error: function (error) {
-                         alert("error-InsertProduct.aspx");
-                         UnLoad1();
-                         alert("שגיאה. אנא נסה שוב")
-                     } //error
-                 });   // ajax
-             } //AddProduct()
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "text",
+                    success: function (res) {
+                        UnLoad1();
+                        alert("מוצר הוסף בהצלחה")
+                        window.location.replace('#info-page', 'flip', true, true);
+                    }, // success
+                    error: function (error) {
+                        alert("error-InsertProduct.aspx");
+                        UnLoad1();
+                        alert("שגיאה. אנא נסה שוב")
+                    } //error
+                });   // ajax
+            } //AddProduct()
 
-             function Load1() {
-                 $.mobile.loading('show', {
-                     text: "מוסיף מוצר לרשימה...",
-                     theme: 'b',
-                     textVisible: true
-                 });
-             }
+            function Load1() {
+                $.mobile.loading('show', {
+                    text: "מוסיף מוצר לרשימה...",
+                    theme: 'b',
+                    textVisible: true
+                });
+            }
 
-             function UnLoad1() {
-                 $.mobile.loading('hide');
-             } // Unload
-             function back() {
-                 window.location.replace('mainPage.htm', 'pop', true, true);
-             }
+            function UnLoad1() {
+                $.mobile.loading('hide');
+            } // Unload
+            function back() {
+                window.location.replace('mainPage.htm', 'pop', true, true);
+            }
 
 
-        function RediirectToPage() {
-            var a = $("ul.emp_listview").prev().find('input.ui-input-text');
-            var a1 = $('#prof-list').prev().find(".ui-input-search .ui-input-text").val();
-            aa = $('#prof-list').val();
-
-            alert(aa);
-            window.location.replace('#InsertNewProduct', 'flip', true, true);
+            function RediirectToPage() {
+                var searchText = $('#prof-list').prev().find(".ui-input-search .ui-input-text").val();
+                var newProductDesc = document.getElementById("product_desc1");
+                newProductDesc.value = searchText;
+                window.location.replace('#InsertNewProduct', 'flip', true, true);
             }
 </script>
    
@@ -211,7 +209,7 @@
 </head>
 <body>
     <!--רשימת מוצרים -->
-    <div data-role="page" id="info-page" data-theme="e" data-position="fixed">
+    <div data-role="page" id="info-page" data-theme="b" data-position="fixed">
         <div data-role="header">
             <h1>
                 רשימת מוצרים</h1>
