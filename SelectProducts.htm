@@ -27,8 +27,8 @@
 
             $.ajax({
                 type: "GET",
-                url: "BL/GetProducts.aspx",
-                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
+                //url: "BL/GetProducts.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
                 data: {},
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -132,8 +132,8 @@
                 var UserId = window.localStorage.getItem("UserId")
                 $.ajax({
                     type: "GET",
-                    url: "BL/InsertProduct.aspx",
-                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+                    //url: "BL/InsertProduct.aspx",
+                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                     data:
                      { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                     contentType: "application/json; charset=utf-8",
@@ -162,8 +162,8 @@
                 var UserId = window.localStorage.getItem("UserId")
                 $.ajax({
                     type: "GET",
-                    url: "BL/InsertNewProduct.aspx",
-                    // url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
+                    //url: "BL/InsertNewProduct.aspx",
+                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
                     data:
                      { 'product_desc': product_desc, 'Product_amount': Product_amount, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                     contentType: "application/json; charset=utf-8",
@@ -209,16 +209,16 @@
 </head>
 <body>
     <!--רשימת מוצרים -->
-    <div data-role="page" id="info-page" data-theme="b" data-position="fixed">
+    <div data-role="page" id="info-page" data-theme="e" data-position="fixed">
         <div data-role="header">
             <h1>
                 רשימת מוצרים</h1>
                        <!-- <a href="#InsertNewProduct" data-role="button" data-icon="plus">מוצר חדש</a>-->
                                                 <a href="" data-rel="popup" data-position-to="window" data-transition="flip" rel="external"
-                            onclick="RediirectToPage()">מוצר חדש</a>
+                            onclick="RediirectToPage()">חדש</a>
         </div>
         <div data-role="content">
-            <ul class="emp_listview" data-role="listview" id="prof-list" data-divider-theme="a" data-inset="true" data-name="niran"
+            <ul class="emp_listview" data-role="listview" id="prof-list" data-divider-theme="e" data-inset="true" data-name="niran"
                 data-filter-placeholder="חפש מוצר" data-filter="true" data>
                 <!--                <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>-->
             </ul>

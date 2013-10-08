@@ -32,8 +32,8 @@
         $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                 url: "BL/ShowShoppingList.aspx",
-                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
+                 //url: "BL/ShowShoppingList.aspx",
+                 url: "http://proj.ruppin.ac.il/igroup29/prod/BL/ShowShoppingList.aspx",
                  data: { 'UserId': UserId },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
@@ -131,8 +131,8 @@
                 $.ajax
              ({
                  type: "GET",
-                 url: "BL/RemoveProduct.aspx",
-                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
+                 //url: "BL/RemoveProduct.aspx",
+                 url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RemoveProduct.aspx",
                  data: { 'Product_list_id': Product_list_id, 'RemoveOrDelete': RemoveOrDelete },
                  contentType: "application/json; charset=utf-8",
                  dataType: "text",
@@ -160,8 +160,8 @@
             $.ajax
              ({
                  type: "GET", // כשרוצים לשלוף נתונים מהמסד נתונים
-                 url: "BL/FinishShopping.aspx",
-                 //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
+                 //url: "BL/FinishShopping.aspx",
+                 url: "http://proj.ruppin.ac.il/igroup29/prod/BL/FinishShopping.aspx",
                  data: { 'UserId': UserId },
                  contentType: "application/json; charset=utf-8",
                  dataType: "json",
@@ -204,11 +204,10 @@
     </div>
     <div data-role="content" >
 
-     <div data-role="header" data-theme="a">   <h1> רשימה</h1></div>
         <fieldset data-role="controlgroup" data-iconpos="right" id="prof-list" style="text-align: right">
         
           </fieldset>
-          <div data-role="header" data-theme="a">   <h1> קניתי</h1></div>
+          <div data-role="header" data-theme="a">   <h3> מוצרים בעגלה</h3></div>
                   <fieldset data-role="controlgroup" data-iconpos="right" id="prof-list1">
 
           </fieldset>
