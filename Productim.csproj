@@ -51,6 +51,8 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Productim.dll" />
+    <Content Include="bin\Productim.pdb" />
     <Content Include="BL\FinishShopping.aspx" />
     <Content Include="BL\GetProductCategories.aspx" />
     <Content Include="BL\GetProducts.aspx" />
@@ -60,7 +62,11 @@
     <Content Include="BL\RemoveProduct.aspx" />
     <Content Include="BL\ShowShoppingList.aspx" />
     <Content Include="BL\WebForm1.aspx" />
+    <Content Include="cordova-2.5.0.js" />
     <Content Include="HTMLPage1.htm" />
+    <Content Include="obj\Debug\Productim.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\Productim.dll" />
+    <Content Include="obj\Debug\Productim.pdb" />
     <Content Include="SelectProducts.htm" />
     <Content Include="images\Adopt-A-Pet.png" />
     <Content Include="images\background.jpg" />
@@ -180,11 +186,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Logs\22_08_2013.log" />
     <None Include="Logs\28_08_2013.log" />
     <None Include="Logs\31_08_2013.log" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
