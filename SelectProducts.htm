@@ -184,7 +184,7 @@
 
             function Load1() {
                 $.mobile.loading('show', {
-                    text: "מוסיף מוצר לרשימה...",
+                    text: "",
                     theme: 'b',
                     textVisible: true
                 });
@@ -193,6 +193,7 @@
             function UnLoad1() {
                 $.mobile.loading('hide');
             } // Unload
+
             function back() {
                 window.location.replace('mainPage.htm', 'pop', true, true);
             }
@@ -220,13 +221,8 @@
                     success: function (res) {
 
                         UnLoad1();
-                        window.localStorage.setItem("test", res[0].LastPurchesDate);
-                        alert(res[0].LastPurchesDate);
-                        ddd = res[0].LastPurchesDate;
-                        alert(ddd);
-                        aa = document.getElementById("lastPurchedID");
-                        aa.innerHTML = ddd;
-                        //$('#lastPurchedID').val() = ddd;
+                     
+                       $("#buttonId .ui-btn-text").text(res[0].LastPurchesDate);
 
                     }, // success
                     error: function (error) {
@@ -312,10 +308,13 @@
             </tr>
 
             </table>
-          
-                      <button type="submit" data-theme="e" data-icon="info" onclick="LastPurchesd()">
-                ?מתי נקנה</button>
-                <div id="lastPurchedID"></div>
+
+           
+            <a href="#"  id="buttonId"  data-role="button" data-icon="info" onclick="LastPurchesd()">מתי נקנה?</a>
+         <!-- <input type="submit" id="buttonId" value="Submit Button" data-icon="info" onclick="LastPurchesd()"/>-->
+<!--                      <button id="buttonId" value="מתי נקנה? type="submit" data-theme="e" data-icon="info" onclick="LastPurchesd()">
+                </button>-->
+               
                 
 
         <div data-role="footer" style="text-align: left" data-position="fixed">
