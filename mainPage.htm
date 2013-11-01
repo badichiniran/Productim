@@ -74,8 +74,8 @@
             var password = $('#pssTXT').val();
             $.ajax({
                 type: "GET",
-                //url: "BL/loginPage.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/loginPage.aspx",
+                url: "BL/loginPage.aspx",
+                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/loginPage.aspx",
                 data: { 'id': id, 'password': password },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -87,9 +87,6 @@
                 error: function (error) {
                     alert("error-loginPage.aspx");
                     if (error.status == 1) {
-                        alert("סיסמא לא נכונה. אנא נסה שוב");
-                    }
-                    else if (error.status == 2) {
                         alert("שם משתמש או סיסמא לא נכונים. אנא נסה שוב");
                     }
                     else if (error.status == 3) {
@@ -163,6 +160,43 @@
         function UnLoad1() {
             $.mobile.loading('hide');
         } // Unload
+
+
+        function register() {
+            var NewUNTB = $('#NewUNTB').val();
+            var NewPassTB = $('#NewPassTB').val();
+            $.ajax({
+                type: "GET",
+                url: "BL/RegisterUser.aspx",
+                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RegisterUser.aspx",
+                data: { 'NewUNTB': NewUNTB, 'NewPassTB': NewPassTB },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    alert("הרישום עבר בהצלחה");
+                    window.localStorage.setItem("UserId", res[0].id);
+                    window.location.replace('mainPage.htm');
+                }, // success
+                error: function (error) {
+                    alert("error-loginPage.aspx");
+                    if (error.status == 1) {
+                        alert("סיסמא לא נכונה. אנא נסה שוב");
+                    }
+                    else if (error.status == 2) {
+                        alert("שם משתמש או סיסמא לא נכונים. אנא נסה שוב");
+                    }
+                    else if (error.status == 3) {
+                        alert("נא הזן שם משתמש וסיסמא");
+                    }
+                    else alert(error)
+                    //alert("שם משתמש או סיסמא שהזנת שגויה");
+                    //location.reload();
+                } //error
+            });       // ajax
+
+        }
+
+
     </script>
 </head>
 <body>
@@ -221,6 +255,9 @@
                 data-theme="b" />
             <button type="submit" data-theme="e" data-icon="check" onclick="checkID()">
                 התחבר</button>
+                <br /> <br /> <br />
+            <a href="#register" data-role="button" data-icon="edit" data-rel="dialog" data-transition="flip">
+                משתמש חדש</a>
         </div>
         <!-- /content -->
     </div>
@@ -237,6 +274,31 @@
                 <a href="#pageIndex" data-role="button" onclick="deleteLacalStorage()">כן</a> <a
                     href="#HomePage" data-rel="back" data-role="button">לא</a>
             </div>
+        </div>
+    </div>
+    <!-- End page LogOut-->
+
+
+
+        <!--------------------------------------------------- register page --------------------------------------------------->
+    <div data-role="page" data-theme="e" id="register" style="height: 100%;">
+        <div data-role="header" dir="rtl" style="height: 50%; text-align: center;">
+            <p>
+               אנא בחר שם משתמש וסיסמא
+            </p>
+        </div>
+        <div data-role="content" style="padding: 10px 20px; text-align: right">
+            <label for="un" dir="rtl">
+                שם משתמש:</label>
+            <input type="text" name="user" id="NewUNTB" value="" placeholder="שם משתמש עד 15 תווים" dir="rtl"
+                data-theme="b" />
+            <label for="pw" dir="rtl">
+                סיסמא:</label>
+            <input type="password" name="pass" id="NewPassTB" value="" placeholder="סיסמא עד 15 תווים" dir="rtl"
+                data-theme="b" />
+            <button type="submit" data-theme="e" data-icon="check" onclick="register()">
+                הירשם</button>
+
         </div>
     </div>
     <!-- End page LogOut-->

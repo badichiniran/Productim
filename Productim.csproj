@@ -59,6 +59,7 @@
     <Content Include="BL\InsertNewProduct.aspx" />
     <Content Include="BL\InsertProduct.aspx" />
     <Content Include="BL\loginPage.aspx" />
+    <Content Include="BL\RegisterUser.aspx" />
     <Content Include="BL\RemoveProduct.aspx" />
     <Content Include="BL\ShowShoppingList.aspx" />
     <Content Include="BL\WebForm1.aspx" />
@@ -156,6 +157,10 @@
     </Compile>
     <Compile Include="BL\loginPage.aspx.designer.cs">
       <DependentUpon>loginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BL\RegisterUser.aspx.cs">
+      <DependentUpon>RegisterUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BL\RemoveProduct.aspx.cs">
       <DependentUpon>RemoveProduct.aspx</DependentUpon>

@@ -37,16 +37,12 @@ namespace Productim.BL
 
             try
             {
-                UserDetails = dbs.getPass(UserNameString);
+                UserDetails = dbs.getUserDedails(UserNameString, passwordString);
 
                 if (passwordString != UserDetails.Rows[0].ItemArray[0].ToString())
                 {
                     Response.StatusCode = 1;   // user name exists BUT password is not correct
                 }
-                //else
-                //{
-                //    string a = "f";
-                //}
 
 
             }
@@ -59,9 +55,9 @@ namespace Productim.BL
             }
 
             UserDetails.Columns[1].ColumnName = "id";
-            string jsonStringProducts = serializer.Serialize(SerializeTable(UserDetails));
+            string jsonStringUserDetails = serializer.Serialize(SerializeTable(UserDetails));
             //string a = "[{UserId:1}]";//[{"UserPassword":"1234","id":1}]
-            Response.Write(jsonStringProducts);
+            Response.Write(jsonStringUserDetails);
             Response.End();
         }
 

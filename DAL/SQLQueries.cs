@@ -16,9 +16,9 @@ namespace Productim.DAL
             //
         }
 
-        public static String getPass(string UserName)
+        public static String getUserDedails(string UserName, string passwordString)
         {
-            return "SELECT UserPassword,UserId FROM dbo.Users WHERE UserName = '" + UserName + "'";
+            return "SELECT UserPassword,UserId FROM dbo.Users WHERE UserName = '" + UserName + "' and UserPassword = '" + passwordString + "'";
         }
 
 
@@ -98,5 +98,19 @@ namespace Productim.DAL
             return command;
         }
 
+
+
+        public static String CreateNewUser(List<string> UserDetailsList)
+        {
+            String command;
+
+            string insertNewUser = " INSERT INTO Users (UserName,UserPassword) VALUES ('" + UserDetailsList[0] + "'," + UserDetailsList[1] + ")";
+            string getNewUserId = " DECLARE @tmpUserId int SET @tmpUserId = (select top 1 UserId from Users where UserName='" + UserDetailsList[0] + "' order by Register_time_stmp desc ) ";
+            string insertNewUserList = " INSERT INTO List (List_name,UserId,Is_Active) VALUES ('רשימת קניות לסופר',@tmpUserId,1)";
+            string returnNewUserId = " select UserId from Users where UserId=@tmpUserId " ;
+            command = insertNewUser + getNewUserId + insertNewUserList + returnNewUserId;
+
+            return command;
+        }
     }
 }

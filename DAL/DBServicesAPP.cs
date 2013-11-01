@@ -50,13 +50,13 @@ namespace Productim.DAL
             }
         }
 
-        public DataTable getPass(string UserName)
+        public DataTable getUserDedails(string UserName,string passwordString)
         {
             SqlConnection con;
             try
             {
                 con = connect(); // open the connection to the database/
-                da = new SqlDataAdapter(SQLQueries.getPass(UserName), con); // create the data adapter
+                da = new SqlDataAdapter(SQLQueries.getUserDedails(UserName, passwordString), con); // create the data adapter
                 DataSet ds = new DataSet(); 
                 da.Fill(ds);       // Fill the datatable (in the dataset), using the Select command 
                 dt = ds.Tables[0];     // point to the cars table , which is the only table in this case
@@ -187,7 +187,6 @@ namespace Productim.DAL
 
         public DataTable ShowShoppingList_byUserId(string UserId)
         {
-
             SqlConnection con;
             try
             {
@@ -196,7 +195,6 @@ namespace Productim.DAL
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 dt = ds.Tables[0];
-
             }
             catch (Exception ex)
             {
@@ -225,8 +223,6 @@ namespace Productim.DAL
             }
             disconnect(con);
         }
-
-
         public void DeleteProduct(string Product_list_id)
         {
 
@@ -265,5 +261,25 @@ namespace Productim.DAL
             }
             disconnect(con);
         }
+
+        public DataTable CreateNewUser(List<string> UserDetailsList)
+        {
+            SqlConnection con;
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.CreateNewUser(UserDetailsList), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            disconnect(con);
+            return dt;
+        }
+        
     }
 }
