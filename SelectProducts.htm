@@ -28,8 +28,8 @@
 
             $.ajax({
                 type: "GET",
-                url: "BL/GetProducts.aspx",
-                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
+                //url: "BL/GetProducts.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
                 data: {},
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -133,8 +133,8 @@
                 var UserId = window.localStorage.getItem("UserId")
                 $.ajax({
                     type: "GET",
-                    url: "BL/InsertProduct.aspx",
-                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+                    //url: "BL/InsertProduct.aspx",
+                   url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                     data:
                      { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                     contentType: "application/json; charset=utf-8",
@@ -163,8 +163,8 @@
                 var UserId = window.localStorage.getItem("UserId")
                 $.ajax({
                     type: "GET",
-                    url: "BL/InsertNewProduct.aspx",
-                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
+                    //url: "BL/InsertNewProduct.aspx",
+                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
                     data:
                      { 'product_desc': product_desc, 'Product_amount': Product_amount, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                     contentType: "application/json; charset=utf-8",
@@ -212,8 +212,8 @@
                 var Product_id = $('#Product_id').val();
                 $.ajax({
                     type: "GET",
-                    url: "BL/GetLastPurchesd.aspx",
-                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetLastPurchesd.aspx",
+                    //url: "BL/GetLastPurchesd.aspx",
+                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetLastPurchesd.aspx",
                     data:
                      { 'UserId': UserId, 'Product_id': Product_id },
                     contentType: "application/json; charset=utf-8",

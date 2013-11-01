@@ -70,22 +70,25 @@
         }
 
         function checkID() {
+            Load1();
             var id = $('#idTXT').val();
             var password = $('#pssTXT').val();
             $.ajax({
                 type: "GET",
-                url: "BL/loginPage.aspx",
-                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/loginPage.aspx",
+                // url: "BL/loginPage.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/loginPage.aspx",
                 data: { 'id': id, 'password': password },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (res) {
+                    UnLoad1();
                     alert("התחברת בהצלחה");
                     window.localStorage.setItem("UserId", res[0].id);
                     window.location.replace('mainPage.htm');
                 }, // success
                 error: function (error) {
-                    alert("error-loginPage.aspx");
+                    UnLoad1();
+                  
                     if (error.status == 1) {
                         alert("שם משתמש או סיסמא לא נכונים. אנא נסה שוב");
                     }
@@ -151,7 +154,7 @@
 
         function Load1() {
             $.mobile.loading('show', {
-                text: "שומר פרטים",
+                text: "",
                 theme: 'b',
                 textVisible: true
             });
@@ -167,8 +170,8 @@
             var NewPassTB = $('#NewPassTB').val();
             $.ajax({
                 type: "GET",
-                url: "BL/RegisterUser.aspx",
-                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RegisterUser.aspx",
+                // url: "BL/RegisterUser.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RegisterUser.aspx",
                 data: { 'NewUNTB': NewUNTB, 'NewPassTB': NewPassTB },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
