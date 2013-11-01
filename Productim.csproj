@@ -66,6 +66,8 @@
     <Content Include="BL\WebForm1.aspx" />
     <Content Include="cordova-2.5.0.js" />
     <Content Include="HTMLPage1.htm" />
+    <Content Include="images\shopingMain.jpg" />
+    <Content Include="images\shoppingCartIcon.png" />
     <Content Include="obj\Debug\Productim.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Productim.dll" />
     <Content Include="obj\Debug\Productim.pdb" />
