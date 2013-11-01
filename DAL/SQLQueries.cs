@@ -89,7 +89,7 @@ namespace Productim.DAL
         {
             String command;
             string getOldList = " DECLARE @OldList_id int SET @OldList_id = (select List_id from List where UserId='" + UserId + "' and  Is_Active=1 )";
-            string updateList = " UPDATE [List] SET [Is_Active] = 0 WHERE UserId='" + UserId + "' and Is_Active=1 ";
+            string updateList = " UPDATE [List] SET [Is_Active] = 0, Purchasing_time_stmp=GETDATE() WHERE UserId='" + UserId + "' and Is_Active=1 ";
             string insertNewList = " INSERT INTO [List] (UserId) VALUES(" + UserId + ") ";
             string getNewListId = " DECLARE @NewList_id int SET @NewList_id = (select List_id from List where UserId='" + UserId + "' and  Is_Active=1 )";
             string updateProductListId = " UPDATE [Product_list] SET [List_id] = @NewList_id WHERE List_id=@OldList_id  and Is_purchased=0 ";
@@ -111,6 +111,15 @@ namespace Productim.DAL
             command = insertNewUser + getNewUserId + insertNewUserList + returnNewUserId;
 
             return command;
+        }
+
+        public static String GetLastPurchesd(Product p)
+        {
+
+
+            string LastPurchesd = "select top 1 convert (varchar,Purchasing_time_stmp, 103)as Purchasing_time_stmp  from list where list_id in (select list_id from Product_list where Product_id ='" + p.Product_id + "') and UserId='" + p.UserId + "' and Is_Active=0 order by Purchasing_time_stmp desc";
+
+            return LastPurchesd;
         }
     }
 }

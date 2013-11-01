@@ -280,6 +280,23 @@ namespace Productim.DAL
             disconnect(con);
             return dt;
         }
-        
+        public DataTable GetLastPurchesd(Product p)
+        {
+            SqlConnection con;
+            try
+            {
+                con = connect();
+                da = new SqlDataAdapter(SQLQueries.GetLastPurchesd(p), con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                dt = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            disconnect(con);
+            return dt;
+        }
     }
 }

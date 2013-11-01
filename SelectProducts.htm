@@ -28,8 +28,8 @@
 
             $.ajax({
                 type: "GET",
-                //url: "BL/GetProducts.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
+                url: "BL/GetProducts.aspx",
+                //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetProducts.aspx",
                 data: {},
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -133,8 +133,8 @@
                 var UserId = window.localStorage.getItem("UserId")
                 $.ajax({
                     type: "GET",
-                    //url: "BL/InsertProduct.aspx",
-                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+                    url: "BL/InsertProduct.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
                     data:
                      { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                     contentType: "application/json; charset=utf-8",
@@ -163,8 +163,8 @@
                 var UserId = window.localStorage.getItem("UserId")
                 $.ajax({
                     type: "GET",
-                    //url: "BL/InsertNewProduct.aspx",
-                    url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
+                    url: "BL/InsertNewProduct.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertNewProduct.aspx",
                     data:
                      { 'product_desc': product_desc, 'Product_amount': Product_amount, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                     contentType: "application/json; charset=utf-8",
@@ -204,6 +204,38 @@
                 newProductDesc.value = searchText;
                 window.location.replace('#InsertNewProduct', 'flip', true, true);
             }
+
+            function LastPurchesd() {
+                Load1();
+                var UserId = window.localStorage.getItem("UserId")
+                var Product_id = $('#Product_id').val();
+                $.ajax({
+                    type: "GET",
+                    url: "BL/GetLastPurchesd.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/prod/BL/GetLastPurchesd.aspx",
+                    data:
+                     { 'UserId': UserId, 'Product_id': Product_id },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (res) {
+
+                        UnLoad1();
+                        window.localStorage.setItem("test", res[0].LastPurchesDate);
+                        alert(res[0].LastPurchesDate);
+                        ddd = res[0].LastPurchesDate;
+                        alert(ddd);
+                        aa = document.getElementById("lastPurchedID");
+                        aa.innerHTML = ddd;
+                        //$('#lastPurchedID').val() = ddd;
+
+                    }, // success
+                    error: function (error) {
+                        alert("error-InsertProduct.aspx");
+                        UnLoad1();
+                        alert("שגיאה. אנא נסה שוב")
+                    } //error
+                });        // ajax
+            } //LastPurchesd()
 </script>
    
 
@@ -273,14 +305,21 @@
             <tr>
                 <td class="style2">
                     <input id="Comment" type="text" />
-                </td>
+            </td>
                 <td class="style2">
                     הערה:
                 </td>
             </tr>
-        </table>
+
+            </table>
+          
+                      <button type="submit" data-theme="e" data-icon="info" onclick="LastPurchesd()">
+                ?מתי נקנה</button>
+                <div id="lastPurchedID"></div>
+                
+
         <div data-role="footer" style="text-align: left" data-position="fixed">
-            <a href="#" data-rel="back" data-role="button" data-icon="back">חזרה</a>
+            <a href="#" data-rel="back" data-role="button" data-icon="back" >חזרה</a>
         </div>
     </div>
     <!--מוצר חדש לרשימה -->

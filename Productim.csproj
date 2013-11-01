@@ -54,6 +54,7 @@
     <Content Include="bin\Productim.dll" />
     <Content Include="bin\Productim.pdb" />
     <Content Include="BL\FinishShopping.aspx" />
+    <Content Include="BL\GetLastPurchesd.aspx" />
     <Content Include="BL\GetProductCategories.aspx" />
     <Content Include="BL\GetProducts.aspx" />
     <Content Include="BL\InsertNewProduct.aspx" />
@@ -122,6 +123,13 @@
     </Compile>
     <Compile Include="BL\FinishShopping.aspx.designer.cs">
       <DependentUpon>FinishShopping.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BL\GetLastPurchesd.aspx.cs">
+      <DependentUpon>GetLastPurchesd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BL\GetLastPurchesd.aspx.designer.cs">
+      <DependentUpon>GetLastPurchesd.aspx</DependentUpon>
     </Compile>
     <Compile Include="BL\GetProductCategories.aspx.cs">
       <DependentUpon>GetProductCategories.aspx</DependentUpon>
