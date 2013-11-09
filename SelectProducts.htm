@@ -3,21 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
     <style type="text/css">
-        #contentId
-        {
-            text-align: center;
-        }
-        
-        
-        .style2
+        .textStyle
         {
             text-align: right;
             direction: rtl;
@@ -28,7 +21,7 @@
 
             $.ajax({
                 type: "GET",
-               // url: "BL/GetProducts.aspx",
+                //url: "BL/GetProducts.aspx",
                 url: "http://proj.ruppin.ac.il/igroup29/test2/BL/GetProducts.aspx",
                 data: {},
                 contentType: "application/json; charset=utf-8",
@@ -41,17 +34,6 @@
 
                 } //error
             });  // ajax
-
-           
-
-            //var info= [{ "id": 1, "name": "שתיה" }, { "id": 2, "name": "ירקות ופירות" }, { "id": 3, "name": " עוף בשר דגים" }, { "id": 4, "name": "מוצרי חלב" }, { "id": 5, "name": "מאפה" }, { "id": 6, "name": "נשנושים" }, { "id": 7, "name": "דגנים" }, { "id": 8, "name": "היגיינה" }, { "id": 9, "name": "שונות"}]
-
-
-            //pageinit event for first page
-            //triggers only <once></once>
-            //write all your on-load functions and event handlers pertaining to page1
-            //            $(document).on("pageinit", "#info-page", function () {
-
 
             function fillDynamicList(info) {
                 //set up string for adding <li/>
@@ -77,6 +59,7 @@
                         //Now the URL in the address bar will read index.html#details-page
                         //where #details-page is the "id" of the second page
                         //we're gonna redirect to that now using changePage() method
+                        $("#buttonId .ui-btn-text").text('?מתי נקנה');
                         $.mobile.changePage("#details-page");
                     });
 
@@ -104,7 +87,6 @@
 
 
             function AddProduct() {
-
                 Load1();
                 var Prodect_amount = $('#Product_amount').val();
                 var Product_id = $('#Product_id').val();
@@ -134,7 +116,6 @@
 
 
             function AddNewProduct() {
-                // alert(aa);
                 Load1();
                 var Product_amount = $('#Product_amount1').val();
                 var product_desc = $('#product_desc1').val();
@@ -199,21 +180,21 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (res) {
-
                         UnLoad1();
-
-                        $("#buttonId .ui-btn-text").text(res[0].LastPurchesDate);
-
+                        if (res.length == 0)
+                            $("#buttonId .ui-btn-text").text('אף פעם');
+                        else
+                            $("#buttonId .ui-btn-text").text(res[0].LastPurchesDate);
+                        //                        $("#buttonId").button('disable');	
                     }, // success
                     error: function (error) {
                         alert("error-InsertProduct.aspx");
                         UnLoad1();
                         alert("שגיאה. אנא נסה שוב")
                     } //error
-                });        // ajax
+                }); // ajax
             } //LastPurchesd()
 </script>
-   
 
 </head>
 <body>
