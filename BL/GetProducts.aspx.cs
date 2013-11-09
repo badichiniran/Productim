@@ -40,6 +40,7 @@ namespace Productim.BL
             Products.Columns[1].ColumnName = "name";
 
 
+           // string jsonStringProducts = "{\"Products\":" + serializer.Serialize(SerializeTable(Products)) + "}";
             string jsonStringProducts = serializer.Serialize(SerializeTable(Products));
 
             Response.Write(jsonStringProducts);

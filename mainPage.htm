@@ -76,7 +76,7 @@
             $.ajax({
                 type: "GET",
                 // url: "BL/loginPage.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/loginPage.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/test2/BL/loginPage.aspx",
                 data: { 'id': id, 'password': password },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -129,7 +129,7 @@
             $.ajax({
                 type: "GET",
                 //url: "BL/InsertProduct.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/InsertProduct.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/test2/BL/InsertProduct.aspx",
                 data:
                      { 'Prodect_name': Prodect_name, 'Prodect_amount': Prodect_amount, 'ProductType_id': ProductType_id },
                 contentType: "application/json; charset=utf-8",
@@ -171,7 +171,7 @@
             $.ajax({
                 type: "GET",
                 // url: "BL/RegisterUser.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/prod/BL/RegisterUser.aspx",
+                url: "http://proj.ruppin.ac.il/igroup29/test2/BL/RegisterUser.aspx",
                 data: { 'NewUNTB': NewUNTB, 'NewPassTB': NewPassTB },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -217,18 +217,26 @@
                     <td>
                         <a href="" data-rel="popup" data-position-to="window" data-transition="flip" rel="external"
                             onclick="RediirectToPage(2)">
-                            <img src="images/images.jpg" style="width: 105px; height: 105px" /></a></br>
+                            <img src="images/list_check-512.png" style="width: 105px; height: 105px" /></a></br>
                         צפה ברשימה
                     </td>
-                </tr>
-                <tr>
+                
+                
                     <td>
                         <a href="" data-rel="popup" data-position-to="window" data-transition="flip" rel="external"
                             onclick="RediirectToPage(3)">
-                            <img src="images/images.jpg" style="width: 105px; height: 105px" /></a></br>
+                            <img src="images/Adds-Add-list-icon.png" style="width: 105px; height: 105px" /></a></br>
                        הוסף מוצר לרשימה
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="2" cellspacing="12">
+                      <a href="" data-rel="popup" data-position-to="window" data-transition="flip" rel="external"
+                            onclick="RediirectToPage(3)">
+                            <img src="images/client_list.png" style="width: 105px; height: 105px" /></a></br>
+                            האיזור האישי
+                    </td>
+                    </tr>
             </table>
             </br></br>
 

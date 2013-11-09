@@ -66,8 +66,15 @@
     <Content Include="BL\WebForm1.aspx" />
     <Content Include="cordova-2.5.0.js" />
     <Content Include="HTMLPage1.htm" />
+    <Content Include="images\Adds-Add-list-icon.png" />
+    <Content Include="images\client_list.png" />
+    <Content Include="images\list_check-512.png" />
+    <Content Include="images\oishoppinglist.png" />
+    <Content Include="images\qrCode.png" />
     <Content Include="images\shopingMain.jpg" />
     <Content Include="images\shoppingCartIcon.png" />
+    <Content Include="images\sss.jpg" />
+    <Content Include="images\unnamed.png" />
     <Content Include="obj\Debug\Productim.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Productim.dll" />
     <Content Include="obj\Debug\Productim.pdb" />
