@@ -19,6 +19,11 @@
 
         <script type="text/javascript">
 
+            $(document).bind('pageshow', function () {
+               
+                jQuery.support.cors = true;
+            });
+
             $.ajax({
                 type: "GET",
                 //url: "BL/GetProducts.aspx",
@@ -30,7 +35,9 @@
                     fillDynamicList(info);
                 }, // success
                 error: function (error) {
+                    UnLoad1(); // finish loading list of products
                     alert("Error-GetProductTypes.aspx");
+
 
                 } //error
             });  // ajax
@@ -46,13 +53,17 @@
                     //store index value in array as id of the <a> tag
                     li += '<li><a href="#" id="' + i + '" class="info-go">' + name.name + '</a></li>';
                 });
+
+                UnLoad1(); // finish loading list of products
                 //append list to ul
                 $("#prof-list").append(li).promise().done(function () {
                     //wait for append to finish - thats why you use a promise()
                     //done() will run after append is done
                     //add the click event for the redirection to happen to #details-page
+                   
                     $(this).on("click", ".info-go", function (e) {
                         e.preventDefault();
+                      
                         //store the information in the next page's data
                         $("#details-page").data("info", info[this.id]);
                         //change the page # to second page. 
@@ -109,7 +120,7 @@
                     error: function (error) {
                         alert("error-InsertProduct.aspx");
                         UnLoad1();
-                        alert("שגיאה. אנא נסה שוב")
+                        
                     } //error
                 });   // ajax
             } //AddProduct()
@@ -136,9 +147,9 @@
                         window.location.replace('#info-page', 'flip', true, true);
                     }, // success
                     error: function (error) {
-                        alert("error-InsertProduct.aspx");
+                        alert("error-InsertNewProduct.aspx");
                         UnLoad1();
-                        alert("שגיאה. אנא נסה שוב")
+                       
                     } //error
                 });   // ajax
             } //AddProduct()
@@ -188,16 +199,21 @@
                         //                        $("#buttonId").button('disable');	
                     }, // success
                     error: function (error) {
-                        alert("error-InsertProduct.aspx");
+                        alert("error-GetLastPurchesd.aspx");
                         UnLoad1();
                         alert("שגיאה. אנא נסה שוב")
                     } //error
                 }); // ajax
             } //LastPurchesd()
+
+
+            function uu() {
+                Load1();
+            }
 </script>
 
 </head>
-<body>
+<body onload="uu()">
     <!--רשימת מוצרים -->
     <div data-role="page" id="info-page" data-theme="e" data-position="fixed">
         <div data-role="header" data-position="fixed">

@@ -30,7 +30,7 @@ namespace Productim.DAL
 
         public static String getProducts()
         {
-            return "SELECT Product_id,Product_desc FROM Products";
+            return "SELECT Product_id,Product_desc FROM Products where IsApproved=1";
         }
 
         public static String insertProductToList(Product p)
