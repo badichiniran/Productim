@@ -1,4 +1,0 @@
-28/08/2013 19:57:05 ERROR [10]	 page :InjuredPet_Incident.aspx.cs, the exeption message is : The INSERT statement conflicted with the FOREIGN KEY constraint "Unit_id_FK". The conflict occurred in database "igroup29_test1", table "dbo.Units", column 'Unit_id'.
-The statement has been terminated.
-28/08/2013 20:04:36 ERROR [18]	 page :InjuredPet_Incident.aspx.cs, the exeption message is : The INSERT statement conflicted with the FOREIGN KEY constraint "Unit_id_FK". The conflict occurred in database "igroup29_test1", table "dbo.Units", column 'Unit_id'.
-The statement has been terminated.

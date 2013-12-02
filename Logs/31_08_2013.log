@@ -1,8 +1,0 @@
-31/08/2013 18:49:30 ERROR [10]	 page :ActivityRequestDogTour.aspx.cs, Faild to insertRequest. the exeption message is : Incorrect syntax near the keyword 'WHERE'.
-31/08/2013 18:50:49 ERROR [47]	 page :ActivityRequestDogTour.aspx.cs, Faild to insertRequest. the exeption message is : Incorrect syntax near the keyword 'WHERE'.
-31/08/2013 22:12:11 ERROR [13]	 page :ActivityRequestDogTour.aspx.cs, Faild to insertRequest. the exeption message is : Invalid column name 'P46'.
-Invalid column name 'P45'.
-Invalid column name 'P44'.
-31/08/2013 22:20:29 ERROR [9]	 page :ActivityRequestDogTour.aspx.cs, Faild to insertRequest. the exeption message is : Invalid column name 'P46'.
-Invalid column name 'P45'.
-Invalid column name 'P44'.
