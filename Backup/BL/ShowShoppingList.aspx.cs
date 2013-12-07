@@ -4,50 +4,50 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Productim.DAL;
-using System.Web.Script.Serialization;
 using System.Data;
 using Productim.Classes;
+using System.Web.Script.Serialization;
+using System.Collections.Specialized;
+using Productim.DAL;
 
 namespace Productim.BL
 {
-    public partial class GetProductTypes : System.Web.UI.Page
+    public partial class ShowShoppingList : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             DBServicesAPP dbs = new DBServicesAPP();
+            if (Request.QueryString == null)
+            {
+                Response.End();
+                return;
+            }
+            NameValueCollection requestQuery = Request.QueryString;
 
             JavaScriptSerializer serializer = new JavaScriptSerializer();
 
-            //DataTable getCities;
-            // DataTable getAnimalTypes;
-            DataTable getProductTypes;
+            DataTable ShoppingList;
+
 
             try
             {
+                string UserId = requestQuery["UserId"];
+                ShoppingList = dbs.ShowShoppingList_byUserId(UserId);
 
-
-                getProductTypes = dbs.getProductTypes();
             }
 
             catch (Exception ex)
             {
-                Logger.writeToLog(LoggerLevel.ERROR, "page :InjuredPet.aspx.cs, the exeption message is : " + ex.Message);
+                Logger.writeToLog(LoggerLevel.ERROR, "page :ShowShoppingList.aspx.cs, the exeption message is : " + ex.Message);
                 throw;
             }
+            string jsonStringShoppingList = serializer.Serialize(SerializeTable(ShoppingList));
 
-            getProductTypes.Columns[0].ColumnName = "id";
-            getProductTypes.Columns[1].ColumnName = "name";
-
-
-            string jsonStringProductTypes = serializer.Serialize(SerializeTable(getProductTypes));
-
-
-           // string jsonString = "{\"ProductTypes\":" + jsonStringProductTypes + "}";
-           string jsonString = jsonStringProductTypes;
-            Response.Write(jsonString);
+            Response.Write(jsonStringShoppingList);
             Response.End();
+
         }
+
 
         private IEnumerable<Dictionary<string, object>> SerializeTable(DataTable table)
         {
@@ -56,7 +56,7 @@ namespace Productim.BL
                 var result = new Dictionary<string, object>();
                 foreach (DataColumn column in table.Columns)
                 {
-                    result.Add(column.ColumnName, row.Row[column.ColumnName]);
+                    result.Add(column.ColumnName, Convert.ToString(row.Row[column.ColumnName]));
                 }
 
                 return result;

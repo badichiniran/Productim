@@ -26,8 +26,8 @@
 
             $.ajax({
                 type: "GET",
-                //url: "BL/GetProducts.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/test2/BL/GetProducts.aspx",
+                url: "BL/GetProducts.aspx",
+                //url: "http://proj.ruppin.ac.il/igroup29/test2/BL/GetProducts.aspx",
                 data: {},
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -77,7 +77,8 @@
                     //refresh list to enhance its styling.
                     $(this).listview("refresh");
                 });
-                //            });
+                
+                
             }
 
             //use pagebeforeshow
@@ -92,6 +93,7 @@
 
                 //add this to html
                 $(this).find("[data-role=content]").html(info_view);
+                clearFilter();
             });
 
 
@@ -106,8 +108,8 @@
                 var UserId = window.localStorage.getItem("UserId")
                 $.ajax({
                     type: "GET",
-                    //url: "BL/InsertProduct.aspx",
-                    url: "http://proj.ruppin.ac.il/igroup29/test2/BL/InsertProduct.aspx",
+                    url: "BL/InsertProduct.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/test2/BL/InsertProduct.aspx",
                     data:
                      { 'Prodect_amount': Prodect_amount, 'Product_id': Product_id, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                     contentType: "application/json; charset=utf-8",
@@ -115,7 +117,7 @@
                     success: function (res) {
                         UnLoad1();
                         alert("מוצר הוסף בהצלחה")
-                        window.location.replace('#info-page', 'flip', true, true);
+                        window.location.replace('#productListPage', 'flip', true, true);
                     }, // success
                     error: function (error) {
                         alert("error-InsertProduct.aspx");
@@ -135,8 +137,8 @@
                 var UserId = window.localStorage.getItem("UserId")
                 $.ajax({
                     type: "GET",
-                    //url: "BL/InsertNewProduct.aspx",
-                    url: "http://proj.ruppin.ac.il/igroup29/test2/BL/InsertNewProduct.aspx",
+                    url: "BL/InsertNewProduct.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/test2/BL/InsertNewProduct.aspx",
                     data:
                      { 'product_desc': product_desc, 'Product_amount': Product_amount, 'Units': Units, 'Comment': Comment, 'UserId': UserId },
                     contentType: "application/json; charset=utf-8",
@@ -144,7 +146,7 @@
                     success: function (res) {
                         UnLoad1();
                         alert("מוצר הוסף בהצלחה")
-                        window.location.replace('#info-page', 'flip', true, true);
+                        window.location.replace('#productListPage', 'flip', true, true);
                     }, // success
                     error: function (error) {
                         alert("error-InsertNewProduct.aspx");
@@ -169,8 +171,10 @@
             function back() {
                 window.location.replace('mainPage.htm', 'pop', true, true);
             }
-
-
+            function backToSelectProduct() {
+                window.location.replace('SelectProducts.htm', 'pop', true, true);
+            }
+            
             function RediirectToPage() {
                 var searchText = $('#prof-list').prev().find(".ui-input-search .ui-input-text").val();
                 var newProductDesc = document.getElementById("product_desc1");
@@ -184,8 +188,8 @@
                 var Product_id = $('#Product_id').val();
                 $.ajax({
                     type: "GET",
-                    //url: "BL/GetLastPurchesd.aspx",
-                    url: "http://proj.ruppin.ac.il/igroup29/test2/BL/GetLastPurchesd.aspx",
+                    url: "BL/GetLastPurchesd.aspx",
+                    //url: "http://proj.ruppin.ac.il/igroup29/test2/BL/GetLastPurchesd.aspx",
                     data:
                      { 'UserId': UserId, 'Product_id': Product_id },
                     contentType: "application/json; charset=utf-8",
@@ -210,12 +214,18 @@
             function uu() {
                 Load1();
             }
+
+            function clearFilter() {
+                $('input[data-type="search"]').val("");
+                $('input[data-type="search"]').trigger("keyup");
+            }
+
 </script>
 
 </head>
 <body onload="uu()">
     <!--רשימת מוצרים -->
-    <div data-role="page" id="info-page" data-theme="e" data-position="fixed">
+    <div data-role="page" id="productListPage" data-theme="e" data-position="fixed">
         <div data-role="header" data-position="fixed">
             <a href="#" data-role="button" data-mini="true" data-icon="plus" onclick="RediirectToPage()"
                 data-rel="popup" data-position-to="window" data-transition="flip">חדש</a>
@@ -226,7 +236,7 @@
             <ul class="emp_listview" data-role="listview" id="prof-list" data-divider-theme="e"
                 data-inset="true" data-name="niran" data-filter-placeholder="חפש מוצר" data-filter="true"
                 data>
-                <!--                <li data-role="list-divider" data-theme="b" role="heading">רשימת מוצרים</li>-->
+
             </ul>
         </div>
         <div data-role="footer" style="text-align: left" data-position="fixed">
@@ -251,7 +261,7 @@
                         data-highlight="true" />
                 </td>
                 <td class="style2">
-                    בחר כמות:
+                    :בחר כמות
                 </td>
             </tr>
         </table>
@@ -280,15 +290,12 @@
                     <input id="Comment" type="text" />
                 </td>
                 <td class="style2">
-                    הערה:
+                    :הערה
                 </td>
             </tr>
         </table>
         <a href="#" id="buttonId" data-role="button" data-icon="info" onclick="LastPurchesd()">
-            מתי נקנה?</a>
-        <!-- <input type="submit" id="buttonId" value="Submit Button" data-icon="info" onclick="LastPurchesd()"/>-->
-        <!--                      <button id="buttonId" value="מתי נקנה? type="submit" data-theme="e" data-icon="info" onclick="LastPurchesd()">
-                </button>-->
+            ?מתי נקנה</a>
         <div data-role="footer" style="text-align: left" data-position="fixed">
             <a href="#" data-rel="back" data-role="button" data-icon="back">חזרה</a>
         </div>
@@ -309,7 +316,7 @@
                     <input id="product_desc1" type="text" />
                 </td>
                 <td class="style2">
-                    תיאור:
+                    :תיאור
                 </td>
             </tr>
             <tr>
@@ -318,7 +325,7 @@
                         data-highlight="true" />
                 </td>
                 <td class="style2">
-                    בחר כמות:
+                    :בחר כמות
                 </td>
             </tr>
         </table>
@@ -347,12 +354,12 @@
                     <input id="Comment1" type="text" />
                 </td>
                 <td class="style2">
-                    הערה:
+                    :הערה
                 </td>
             </tr>
         </table>
-        <div data-role="footer" style="text-align: left" data-position="fixed">
-            <a href="#" data-rel="back" data-role="button" data-icon="back">חזרה</a>
+                <div data-role="footer" style="text-align: left" data-position="fixed">
+            <a href="#" data-role="button" onclick="backToSelectProduct()" data-icon="back">חזרה</a>
         </div>
     </div>
     <!-- /page -->

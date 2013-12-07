@@ -3,3 +3,8 @@ C:\Users\niran\Desktop\Productim\Productim\Productim\bin\Productim.pdb
 C:\Users\niran\Desktop\Productim\Productim\Productim\obj\Debug\Productim.dll
 C:\Users\niran\Desktop\Productim\Productim\Productim\obj\Debug\Productim.pdb
 C:\Users\niran\Desktop\Productim\Productim\Productim\obj\Debug\Productim.csprojResolveAssemblyReference.cache
+D:\gitHubRepo\Productim\obj\Debug\Productim.dll
+D:\gitHubRepo\Productim\bin\Productim.dll
+D:\gitHubRepo\Productim\bin\Productim.pdb
+D:\gitHubRepo\Productim\obj\Debug\Productim.pdb
+D:\gitHubRepo\Productim\obj\Debug\Productim.csprojResolveAssemblyReference.cache

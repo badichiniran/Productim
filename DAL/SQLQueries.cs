@@ -107,8 +107,9 @@ namespace Productim.DAL
             string insertNewUser = " INSERT INTO Users (UserName,UserPassword) VALUES ('" + UserDetailsList[0] + "'," + UserDetailsList[1] + ")";
             string getNewUserId = " DECLARE @tmpUserId int SET @tmpUserId = (select top 1 UserId from Users where UserName='" + UserDetailsList[0] + "' order by Register_time_stmp desc ) ";
             string insertNewUserList = " INSERT INTO List (List_name,UserId,Is_Active) VALUES ('רשימת קניות לסופר',@tmpUserId,1)";
+            string insertNew_Constant_UserList = " INSERT INTO List (List_name,UserId,Is_Active,Is_CosntantList) VALUES ('רשימת קניות קבועה',@tmpUserId,0,1)";           
             string returnNewUserId = " select UserId from Users where UserId=@tmpUserId " ;
-            command = insertNewUser + getNewUserId + insertNewUserList + returnNewUserId;
+            command = insertNewUser + getNewUserId + insertNewUserList +insertNew_Constant_UserList+ returnNewUserId;
 
             return command;
         }

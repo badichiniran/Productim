@@ -75,8 +75,8 @@
             var password = $('#pssTXT').val();
             $.ajax({
                 type: "GET",
-                // url: "BL/loginPage.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/test2/BL/loginPage.aspx",
+                url: "BL/loginPage.aspx",
+                //url: "http://proj.ruppin.ac.il/igroup29/test2/BL/loginPage.aspx",
                 data: { 'id': id, 'password': password },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -128,8 +128,8 @@
 
             $.ajax({
                 type: "GET",
-                //url: "BL/InsertProduct.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/test2/BL/InsertProduct.aspx",
+                url: "BL/InsertProduct.aspx",
+                //url: "http://proj.ruppin.ac.il/igroup29/test2/BL/InsertProduct.aspx",
                 data:
                      { 'Prodect_name': Prodect_name, 'Prodect_amount': Prodect_amount, 'ProductType_id': ProductType_id },
                 contentType: "application/json; charset=utf-8",
@@ -170,8 +170,8 @@
             var NewPassTB = $('#NewPassTB').val();
             $.ajax({
                 type: "GET",
-                // url: "BL/RegisterUser.aspx",
-                url: "http://proj.ruppin.ac.il/igroup29/test2/BL/RegisterUser.aspx",
+                url: "BL/RegisterUser.aspx",
+                //url: "http://proj.ruppin.ac.il/igroup29/test2/BL/RegisterUser.aspx",
                 data: { 'NewUNTB': NewUNTB, 'NewPassTB': NewPassTB },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

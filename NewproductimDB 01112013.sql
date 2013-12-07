@@ -35,7 +35,9 @@ List_name nvarchar (20),
 UserId int,
 Creation_date datetime DEFAULT (GETDATE()),
 Is_Active bit NOT NULL DEFAULT ((1)) ,
+Is_CosntantList bit NOT NULL DEFAULT ((0)) ,
 Purchasing_time_stmp datetime ,
+
 constraint UserId_FK foreign key (UserId) references Users  
 ) 
 --ALTER TABLE List ADD Purchasing_time_stmp datetime 

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>How to get jquery mobile checkbox checked value </title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="css/mobile-checkbox.css" />
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js">
+        </script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js">
+        </script>
+        <script src="js/mobile-checkbox.js"></script>
+       
+        <script>
+            try {
+
+                $(function () {
+
+                });
+
+            } catch (error) {
+                console.error("Your javascript has an error: " + error);
+            }
+            function SelectCountry() {
+                var _selectedValue = $("input[type=checkbox]:checked").map(
+     function () { return this.id; }).get().join(",");
+                if (_selectedValue == "") {
+                    alert("No value selected.");
+                } else {
+                    alert(_selectedValue);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Home -->
+        <div data-role="page" id="page1">
+            <div data-role="content">
+                <div id="checkboxes1" data-role="fieldcontain">
+                    <fieldset data-role="controlgroup" data-type="vertical" data-mini="true">
+                        <legend>
+                            COUNTRY LIST
+                        </legend>
+                        <input id="checkbox1" name="chkindia" type="checkbox" value="India" checked="checked"/>
+                        <label for="checkbox1">
+                            India
+                        </label>
+                        <input id="checkbox5" name="chkpakistan" type="checkbox" value="Pakistan"/>
+                        <label for="checkbox5">
+                            Pakistan
+                        </label>
+                        <input id="checkbox6" name="chkchina" type="checkbox" value="China"/>
+                        <label for="checkbox6">
+                            China
+                        </label>
+                        <input id="checkbox7" name="chkjapan" type="checkbox" value="Japan"/>
+                        <label for="checkbox7">
+                            Japan
+                        </label>
+                        <input id="checkbox8" name="chkengland" type="checkbox" value="England"/>
+                        <label for="checkbox8">
+                            England
+                        </label>
+                    </fieldset>
+                </div>
+                <a data-role="button" data-theme="a" href="#page1" data-icon="alert" data-iconpos="left" onclick="javascript:SelectCountry();">
+                    CLICK ME FOR VALUE
+                </a>
+            </div>
+        </div>
+    </body>
+</html>

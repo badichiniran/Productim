@@ -11,7 +11,7 @@ namespace Productim.BL
 {
 
 
-    public partial class GetProductTypes
+    public partial class loginPage
     {
 
         /// <summary>
